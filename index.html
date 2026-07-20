@@ -258,8 +258,9 @@
   .case:hover{transform:translateY(-4px);box-shadow:var(--glow-green);border-color:#bfe6c9}
   .case-top{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:16px}
   .case-brand{display:flex;align-items:center;gap:8px;font-size:20px;font-weight:800;color:var(--heading);letter-spacing:-.01em}
-  .case-brand svg{width:22px;height:22px;flex:0 0 auto}
-  .case-brand.serif{font-family:Georgia,'Times New Roman',serif;font-weight:700;letter-spacing:.02em;font-size:18px;text-transform:uppercase}
+  .case-logo{height:40px;width:auto;display:block}
+  .logo-badge{background:#111820;border-radius:12px;padding:9px 15px;display:inline-flex;align-items:center}
+  .logo-badge img{height:24px;width:auto;display:block}
   .case-tag{font-size:10.5px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--faint);background:#f1f4f6;border:1px solid var(--line-soft);padding:5px 9px;border-radius:999px;white-space:nowrap}
   .case p{font-size:14.5px;color:var(--muted);flex:1}
   .case .chips{margin-top:16px}
@@ -598,7 +599,7 @@
 
           <article class="case">
             <div class="case-top">
-              <span class="case-brand"><svg viewBox="0 0 24 24" fill="none" stroke="#2b9a49" stroke-width="2"><circle cx="7" cy="18" r="2.5"/><circle cx="18" cy="16" r="2.5"/><path d="M9.5 18V6l11-2v12"/><path d="M9.5 9l11-2"/></svg>Musical Touch</span>
+              <img class="case-logo" src="assets/musical-touch-full.png" alt="Musical Touch" />
               <span class="case-tag">Live Entertainment</span>
             </div>
             <p>Musical Touch CRM tracks every event booking from first inquiry to signed contract and final invoice — managing quotes, musicians, and meetings along the way.</p>
@@ -612,7 +613,7 @@
 
           <article class="case">
             <div class="case-top">
-              <span class="case-brand serif">Watch Palace</span>
+              <span class="logo-badge"><img src="assets/watch-palace-horizontal.png" alt="Watch Palace" /></span>
               <span class="case-tag">Luxury Watches</span>
             </div>
             <p>Watch Palace CRM — one system to manage customers, appointments, watch inventory, and sales, with AI that builds staff work schedules automatically.</p>
@@ -626,7 +627,7 @@
 
           <article class="case">
             <div class="case-top">
-              <span class="case-brand">Creador</span>
+              <span class="logo-badge"><img src="assets/creador-logo.svg" alt="Creador" /></span>
               <span class="case-tag">Private Equity</span>
             </div>
             <p>An AI-powered finance system that automatically reads, organizes, and routes invoices.</p>
