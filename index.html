@@ -1,0 +1,722 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>StarHub AI Marketplace — Get the AI you need to grow</title>
+<meta name="description" content="Browse StarHub's AI Marketplace. Enterprise-grade brand flagships and trusted partner integrations for your business." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --brand:#31a952;
+    --brand-2:#4cc46e;
+    --brand-600:#2b9a49;
+    --brand-700:#1f7d38;
+    --brand-soft:#eaf7ee;
+    --brand-logo:#1ed760;
+    --grad-brand:linear-gradient(135deg,#4cc46e 0%,#1f9e4c 100%);
+    --grad-heading:linear-gradient(96deg,#2fae5a 0%,#5fd07f 100%);
+    --ombre-card:linear-gradient(155deg,#ffffff 0%,#ffffff 42%,#effaf1 78%,#e4f6e9 100%);
+    --ombre-wash:radial-gradient(1100px 480px at 78% 8%,rgba(76,196,110,.16),transparent 60%);
+    --glow-green:0 34px 70px -34px rgba(46,190,90,.45);
+    --heading:#111820;
+    --ink:#1c2530;
+    --muted:#5c6672;
+    --faint:#8a929c;
+    --line:#e8ebef;
+    --line-soft:#eef1f4;
+    --bg:#eceef1;
+    --card:#ffffff;
+    --shadow-sm:0 1px 2px rgba(16,24,40,.05);
+    --shadow-md:0 12px 30px -12px rgba(16,24,40,.14);
+    --shadow-lg:0 40px 80px -32px rgba(16,24,40,.28);
+    --r-lg:34px;
+    --r-md:22px;
+    --r-sm:14px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth;scroll-padding-top:90px}
+  body{
+    font-family:'Inter',system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
+    background:#fff;
+    color:var(--ink);
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+    text-rendering:optimizeLegibility;
+  }
+  a{color:inherit;text-decoration:none}
+  img{max-width:100%;display:block}
+  .wrap{max-width:1280px;margin:0 auto;padding:0 clamp(20px,4vw,56px)}
+  .shell{max-width:100%;margin:0;padding:0}
+  .card-shell{
+    background:#fff;
+    border-radius:0;
+    box-shadow:none;
+    overflow:visible;
+  }
+
+  /* ---------- Buttons ---------- */
+  .btn{
+    display:inline-flex;align-items:center;gap:8px;
+    font-weight:600;font-size:15px;
+    padding:12px 22px;border-radius:999px;cursor:pointer;border:0;
+    transition:transform .15s ease, box-shadow .2s ease, background .2s ease;
+    white-space:nowrap;
+  }
+  .btn-primary{background:var(--grad-brand);color:#fff;box-shadow:0 10px 22px -8px rgba(46,190,90,.65)}
+  .btn-primary:hover{filter:brightness(1.05);transform:translateY(-1px);box-shadow:0 16px 30px -10px rgba(46,190,90,.7)}
+  .grad{background:var(--grad-heading);-webkit-background-clip:text;background-clip:text;color:transparent}
+  .btn-ghost{background:#fff;color:var(--ink);border:1px solid var(--line)}
+  .btn-ghost:hover{border-color:#cfd5dc;transform:translateY(-1px)}
+  .btn-lg{padding:15px 30px;font-size:16px}
+
+  /* ---------- Nav ---------- */
+  header.nav{position:sticky;top:0;z-index:60;background:rgba(255,255,255,.86);backdrop-filter:blur(14px);border-bottom:1px solid var(--line-soft)}
+  .nav-inner{display:flex;align-items:center;gap:26px;height:74px}
+  .brand{display:flex;align-items:center;gap:10px;font-weight:800;font-size:20px;letter-spacing:-.02em;color:var(--heading)}
+  .brand img{height:26px;width:auto}
+  .brand .divider{width:1px;height:22px;background:var(--line);margin:0 4px}
+  nav.links{display:flex;align-items:center;gap:26px;font-size:15px;font-weight:500;color:var(--ink)}
+  nav.links a{position:relative;padding:6px 0;color:#39424e;transition:color .15s}
+  nav.links a:hover{color:var(--brand-600)}
+  .nav-right{margin-left:auto;display:flex;align-items:center;gap:22px}
+  .caret{display:inline-block;width:8px;height:8px;border-right:2px solid #98a1ac;border-bottom:2px solid #98a1ac;transform:rotate(45deg);margin-left:5px;margin-bottom:2px}
+  .menu-btn{display:none;background:none;border:0;cursor:pointer}
+
+  /* ---------- Hero ---------- */
+  .hero{padding:56px 0 40px}
+  .hero-grid{display:grid;grid-template-columns:1.05fr 1.15fr;gap:40px;align-items:center}
+  h1.hero-title{font-size:clamp(42px,5.4vw,76px);line-height:.98;font-weight:800;letter-spacing:-.035em;color:var(--heading)}
+  h1.hero-title .g{background:linear-gradient(100deg,#2fae5a 0%,#57cf7c 55%,#8ee6a4 100%);-webkit-background-clip:text;background-clip:text;color:transparent}
+  .hero-sub{margin-top:22px;font-size:18px;color:var(--muted);max-width:400px}
+  .hero-cta{margin-top:28px;display:flex;gap:12px;flex-wrap:wrap}
+
+  .hero-visual{position:relative}
+  .hero-visual::before{content:"";position:absolute;inset:-8% -6% -12% -6%;background:radial-gradient(60% 60% at 62% 42%,rgba(76,196,110,.28),transparent 70%);filter:blur(10px);z-index:0}
+  .hero-photo{position:relative;z-index:1;border-radius:26px;overflow:hidden;box-shadow:var(--glow-green),0 12px 30px -12px rgba(16,24,40,.14);aspect-ratio:5/4;background:#f4f7f5;border:5px solid #fff}
+  .hero-photo img{width:100%;height:100%;object-fit:cover;object-position:50% 16%}
+  .bubble{
+    position:absolute;background:#fff;border:1px solid var(--line);
+    box-shadow:0 10px 26px -12px rgba(16,24,40,.28);
+    border-radius:999px;padding:9px 16px;font-size:13.5px;font-weight:600;color:#2b333d;
+    display:flex;align-items:center;gap:8px;white-space:nowrap;z-index:3;
+    animation:float 6s ease-in-out infinite;
+  }
+  .bubble .dot{width:7px;height:7px;border-radius:50%;background:var(--brand);box-shadow:0 0 0 4px var(--brand-soft)}
+  .b1{top:14%;left:-4%;animation-delay:0s}
+  .b2{top:40%;left:-8%;animation-delay:.8s}
+  .b3{top:66%;left:-3%;animation-delay:1.6s}
+  .b4{top:18%;right:-2%;animation-delay:.4s}
+  .b5{top:44%;right:-5%;animation-delay:1.2s}
+  .b6{top:70%;right:0;animation-delay:2s}
+  .callout{
+    position:absolute;bottom:-18px;right:6%;
+    background:#111820;color:#fff;border-radius:16px;padding:13px 18px;
+    box-shadow:0 20px 40px -16px rgba(16,24,40,.6);
+    font-size:13px;line-height:1.35;max-width:210px;z-index:3;
+  }
+  .callout b{color:#fff;font-weight:700;font-size:14px}
+  .callout .live{color:#4ade80;font-weight:700}
+  @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-9px)}}
+  @media (prefers-reduced-motion:reduce){.bubble{animation:none}}
+
+  /* ---------- Search ---------- */
+  .search-row{margin:46px auto 0;max-width:860px}
+  .searchbar{
+    display:flex;align-items:center;gap:14px;background:#fff;border:1px solid var(--line);
+    border-radius:999px;padding:8px 8px 8px 8px;box-shadow:0 18px 40px -22px rgba(16,24,40,.4);
+    transition:box-shadow .2s, border-color .2s;
+  }
+  .searchbar:focus-within{border-color:var(--brand);box-shadow:0 18px 44px -18px rgba(49,169,82,.4)}
+  .search-ico{width:48px;height:48px;flex:0 0 48px;border-radius:50%;background:var(--brand);display:grid;place-items:center}
+  .searchbar input{flex:1;border:0;outline:0;font-size:16px;color:var(--ink);background:transparent;font-family:inherit}
+  .searchbar input::placeholder{color:var(--faint)}
+
+  /* ---------- Trust stack ---------- */
+  .trust{margin-top:50px;text-align:center}
+  .trust-label{font-size:14px;font-weight:600;color:var(--muted)}
+  .logos{margin-top:24px;display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:20px 40px}
+  .logo-item{display:inline-flex;align-items:center;gap:9px;color:#98a1ab;font-weight:700;font-size:18px;letter-spacing:-.01em;transition:color .2s,opacity .2s;opacity:.85}
+  .logo-item svg{width:23px;height:23px;fill:currentColor;flex:0 0 auto}
+  .logo-item:hover{color:var(--brand-600);opacity:1}
+  .logo-item .aws-smile{width:30px;height:23px}
+
+  /* ---------- Stats ---------- */
+  .stats{margin:44px 0 8px}
+  .stats-inner{background:#f6f8f9;border:1px solid var(--line-soft);border-radius:var(--r-md);display:grid;grid-template-columns:repeat(4,1fr)}
+  .stat{padding:30px 24px;text-align:center;position:relative}
+  .stat + .stat::before{content:"";position:absolute;left:0;top:22%;height:56%;width:1px;background:var(--line)}
+  .stat .num{font-size:clamp(30px,3.4vw,44px);font-weight:800;color:var(--brand);letter-spacing:-.03em;line-height:1}
+  .stat .lbl{margin-top:8px;font-size:14.5px;color:var(--muted);font-weight:500}
+
+  /* ---------- Section scaffolding ---------- */
+  section.block{padding:82px 0}
+  .eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:var(--brand-600);background:var(--brand-soft);padding:7px 14px;border-radius:999px}
+  h2.sec-title{font-size:clamp(30px,3.8vw,46px);line-height:1.05;font-weight:800;letter-spacing:-.03em;color:var(--heading);margin-top:18px;max-width:640px}
+  .sec-sub{margin-top:16px;font-size:18px;color:var(--muted);max-width:620px}
+  .center{text-align:center;margin-left:auto;margin-right:auto}
+  .center h2.sec-title,.center .sec-sub{margin-left:auto;margin-right:auto}
+
+  /* ---------- Workforce features ---------- */
+  .feat-grid{margin-top:46px;display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+  .feat{background:var(--ombre-card);border:1px solid #e4efe7;border-radius:var(--r-md);padding:26px;transition:transform .18s,box-shadow .2s,border-color .2s}
+  .feat:hover{transform:translateY(-4px);box-shadow:var(--glow-green);border-color:#bfe6c9}
+  .feat .ic{width:46px;height:46px;border-radius:13px;background:linear-gradient(135deg,#e9f8ee,#d3f0dc);display:grid;place-items:center;margin-bottom:16px}
+  .feat h3{font-size:18px;font-weight:700;color:var(--heading);letter-spacing:-.01em}
+  .feat p{margin-top:8px;font-size:15px;color:var(--muted)}
+
+  /* ---------- Workforce bento ---------- */
+  .bento{margin-top:8px;display:grid;grid-template-columns:repeat(4,1fr);gap:20px;
+    grid-template-areas:
+      "big big stat1 stat2"
+      "big big chat chat"
+      "lang omni onbrand onbrand";}
+  .bcard{border-radius:var(--r-md);border:1px solid #e4efe7;padding:28px;background:var(--ombre-card);transition:transform .2s,box-shadow .2s,border-color .2s}
+  .bcard:hover{transform:translateY(-4px);box-shadow:var(--glow-green);border-color:#bfe6c9}
+  .b-hero{grid-area:big;display:flex;flex-direction:column;background:linear-gradient(125deg,#fff 42%,#e9f8ee 74%,#cdeed6 100%);position:relative;overflow:hidden}
+  .b-hero::after{content:"";position:absolute;right:-60px;top:-60px;width:240px;height:240px;border-radius:50%;background:radial-gradient(circle,rgba(76,196,110,.28),transparent 68%)}
+  .b-hero h2{position:relative;font-size:clamp(26px,2.7vw,38px);font-weight:800;letter-spacing:-.025em;color:var(--heading);line-height:1.06}
+  .b-hero p{position:relative;margin-top:14px;font-size:16px;color:var(--muted);max-width:360px}
+  .roles{position:relative;margin-top:auto;padding-top:34px;display:flex;align-items:center;gap:16px}
+  .role-icons{display:flex}
+  .role-icons .ri{width:46px;height:46px;border-radius:50%;background:#fff;border:1px solid #e4efe7;display:grid;place-items:center;margin-left:-12px;box-shadow:0 5px 12px -5px rgba(16,24,40,.2)}
+  .role-icons .ri:first-child{margin-left:0;background:var(--grad-brand);border-color:transparent}
+  .role-icons .ri:first-child svg{stroke:#fff}
+  .role-icons .ri svg{width:20px;height:20px;stroke:#3a4550;fill:none;stroke-width:2}
+  .roles .more{font-weight:700;color:var(--brand-600);font-size:16px}
+  .b-stat{display:flex;flex-direction:column;justify-content:center}
+  .b-stat1{grid-area:stat1}.b-stat2{grid-area:stat2}
+  .b-stat .num{font-size:clamp(34px,3.6vw,50px);font-weight:800;letter-spacing:-.03em;line-height:1;background:linear-gradient(120deg,#2fae5a,#66d487);-webkit-background-clip:text;background-clip:text;color:transparent}
+  .b-stat p{margin-top:12px;font-size:14.5px;color:var(--muted)}
+  .b-chat{grid-area:chat;display:flex;flex-direction:column;justify-content:center;gap:12px}
+  .chat-in{align-self:flex-start;background:#f1f4f6;color:#2b333d;border-radius:16px 16px 16px 5px;padding:11px 16px;font-size:14.5px;max-width:80%}
+  .chat-out{align-self:flex-end;background:var(--grad-brand);color:#fff;border-radius:16px 16px 5px 16px;padding:11px 16px;font-size:14.5px;max-width:86%;box-shadow:0 10px 20px -8px rgba(46,190,90,.55);opacity:0;transform:translateY(8px);animation:chatIn .5s ease forwards .9s}
+  @keyframes chatIn{to{opacity:1;transform:translateY(0)}}
+  @media (prefers-reduced-motion:reduce){.chat-out{opacity:1;transform:none;animation:none}}
+  .b-lang{grid-area:lang}.b-omni{grid-area:omni}
+  .b-mini .ic{width:46px;height:46px;border-radius:13px;background:linear-gradient(135deg,#e9f8ee,#d3f0dc);display:grid;place-items:center;margin-bottom:16px}
+  .b-mini h3{font-size:18px;font-weight:700;color:var(--heading)}
+  .b-mini p{margin-top:6px;font-size:14.5px;color:var(--muted)}
+  .b-onbrand{grid-area:onbrand;display:flex;flex-direction:column;justify-content:center}
+  .b-onbrand h3{font-size:21px;font-weight:700;color:var(--heading);letter-spacing:-.01em}
+  .b-onbrand p{margin-top:8px;font-size:15px;color:var(--muted);max-width:440px}
+  @media (max-width:900px){
+    .bento{grid-template-columns:1fr 1fr;grid-template-areas:"big big" "stat1 stat2" "chat chat" "lang omni" "onbrand onbrand"}
+  }
+  @media (max-width:560px){
+    .bento{grid-template-columns:1fr;grid-template-areas:"big" "stat1" "stat2" "chat" "lang" "omni" "onbrand"}
+  }
+
+  /* ---------- Industry solutions ---------- */
+  .sol-grid{margin-top:46px;display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+  .sol{border-radius:var(--r-md);overflow:hidden;position:relative;min-height:360px;display:flex;align-items:flex-end;box-shadow:var(--glow-green);border:4px solid #fff}
+  .sol img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;transition:transform .5s}
+  .sol:hover img{transform:scale(1.05)}
+  .sol::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,14,20,0) 30%,rgba(10,14,20,.86) 100%);z-index:1}
+  .sol-body{position:relative;z-index:2;padding:26px;color:#fff}
+  .sol-body .tag{font-size:12.5px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:#8ff0ad}
+  .sol-body h3{font-size:22px;font-weight:700;margin-top:6px;letter-spacing:-.01em}
+  .sol-body p{font-size:14.5px;color:#d3d8de;margin-top:6px}
+
+  /* ---------- Flagships ---------- */
+  .flag-head{display:flex;align-items:flex-end;justify-content:space-between;gap:20px;flex-wrap:wrap}
+  .flag-grid{margin-top:44px;display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+  .flag{position:relative;background:var(--ombre-card);border:1px solid #e4efe7;border-radius:var(--r-md);padding:24px;display:flex;flex-direction:column;transition:transform .18s,box-shadow .2s,border-color .2s;overflow:hidden}
+  .flag::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:var(--grad-brand);opacity:.85}
+  .flag:hover{transform:translateY(-4px);box-shadow:var(--glow-green);border-color:#bfe6c9}
+  .flag-top{display:flex;align-items:center;justify-content:space-between}
+  .flag .cat{font-size:12px;font-weight:700;letter-spacing:.03em;text-transform:uppercase;color:var(--brand-600)}
+  .flag .rate{display:inline-flex;align-items:center;gap:4px;font-size:13px;font-weight:700;color:#3a4550}
+  .flag h3{margin-top:14px;font-size:19px;font-weight:700;color:var(--heading);letter-spacing:-.01em}
+  .flag p{margin-top:8px;font-size:14.5px;color:var(--muted);flex:1}
+  .chips{margin-top:16px;display:flex;flex-wrap:wrap;gap:7px}
+  .chip{font-size:12px;font-weight:600;color:#2b7a44;background:linear-gradient(135deg,#eef9f1,#dff2e5);border:1px solid #d1ecd9;padding:5px 10px;border-radius:999px}
+  .flag-link{margin-top:18px;display:inline-flex;align-items:center;gap:6px;font-size:14px;font-weight:700;color:var(--brand-600)}
+  .flag-link .arw{transition:transform .18s}
+  .flag:hover .flag-link .arw{transform:translateX(4px)}
+
+  /* ---------- Steps ---------- */
+  .stepper{position:relative;margin-top:58px;display:grid;grid-template-columns:repeat(3,1fr);gap:26px}
+  .stepper-line{position:absolute;top:62px;left:16.66%;right:16.66%;height:4px;background:#e4efe7;border-radius:4px;z-index:0;overflow:hidden}
+  .stepper-line .fill{position:absolute;inset:0 auto 0 0;width:0;background:var(--grad-brand);border-radius:4px;transition:width .6s cubic-bezier(.4,0,.2,1)}
+  .step{position:relative;z-index:1;background:var(--ombre-card);border:1px solid #e4efe7;border-radius:var(--r-md);padding:34px 26px 30px;text-align:center;cursor:pointer;transition:transform .25s,box-shadow .25s,border-color .25s}
+  .step:hover{transform:translateY(-5px);box-shadow:var(--glow-green)}
+  .step .n{width:56px;height:56px;margin:0 auto 16px;border-radius:50%;background:#fff;border:2px solid #d7e6dc;color:#9aa3ad;display:grid;place-items:center;font-weight:800;font-size:22px;transition:.35s cubic-bezier(.4,0,.2,1)}
+  .step .badge{display:inline-block;margin-bottom:10px;font-size:11.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--faint);transition:color .3s}
+  .step h3{font-size:20px;font-weight:700;color:var(--heading)}
+  .step p{margin-top:8px;font-size:15px;color:var(--muted)}
+  .step.is-active{border-color:#bfe6c9;box-shadow:var(--glow-green);transform:translateY(-6px)}
+  .step.is-active .n{background:var(--grad-brand);border-color:transparent;color:#fff;transform:scale(1.09);box-shadow:0 12px 24px -6px rgba(46,190,90,.6)}
+  .step.is-active .badge{color:var(--brand-600)}
+  @media (max-width:820px){.stepper{grid-template-columns:1fr;gap:16px}.stepper-line{display:none}}
+
+  /* ---------- Testimonials ---------- */
+  .tgrid{margin-top:46px;display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+  .quote{background:var(--ombre-card);border:1px solid #e4efe7;border-radius:var(--r-md);padding:26px;display:flex;flex-direction:column;transition:transform .18s,box-shadow .2s}
+  .quote:hover{transform:translateY(-4px);box-shadow:var(--glow-green)}
+  .quote .stars{color:#f5b62b;font-size:15px;letter-spacing:2px}
+  .quote p{margin-top:14px;font-size:15.5px;color:var(--ink);flex:1;line-height:1.6}
+  .who{margin-top:20px;display:flex;align-items:center;gap:12px}
+  .who .av{width:42px;height:42px;border-radius:50%;background:var(--brand-soft);color:var(--brand-700);display:grid;place-items:center;font-weight:800;font-size:14px}
+  .who b{font-size:14.5px;color:var(--heading);display:block}
+  .who span{font-size:13px;color:var(--muted)}
+
+  /* ---------- Grants band ---------- */
+  .grants{background:linear-gradient(120deg,#0f3d22,#155f33);border-radius:var(--r-lg);padding:56px;color:#fff;display:flex;align-items:center;justify-content:space-between;gap:30px;flex-wrap:wrap;position:relative;overflow:hidden}
+  .grants::before{content:"";position:absolute;right:-80px;top:-80px;width:340px;height:340px;border-radius:50%;background:radial-gradient(circle,rgba(46,213,115,.35),transparent 68%)}
+  .grants h2{font-size:clamp(26px,3.2vw,38px);font-weight:800;letter-spacing:-.02em;position:relative;max-width:560px}
+  .grants p{margin-top:12px;color:#bfe9cd;font-size:17px;max-width:520px;position:relative}
+  .grants .g-cta{position:relative}
+  .grants .btn-primary{background:#fff;color:var(--brand-700)}
+  .grants .btn-primary:hover{background:#eafff0}
+
+  /* ---------- FAQ ---------- */
+  .faq{margin-top:44px;max-width:820px;margin-left:auto;margin-right:auto}
+  details.q{background:#fff;border:1px solid var(--line);border-radius:var(--r-sm);padding:4px 22px;margin-bottom:12px;transition:border-color .2s}
+  details.q[open]{border-color:#d7dde3;box-shadow:var(--shadow-sm)}
+  details.q summary{list-style:none;cursor:pointer;padding:18px 0;font-size:17px;font-weight:600;color:var(--heading);display:flex;align-items:center;justify-content:space-between;gap:16px}
+  details.q summary::-webkit-details-marker{display:none}
+  details.q .plus{flex:0 0 auto;width:24px;height:24px;border-radius:50%;background:var(--brand-soft);color:var(--brand-600);display:grid;place-items:center;font-weight:700;transition:transform .2s}
+  details.q[open] .plus{transform:rotate(45deg)}
+  details.q .ans{padding:0 0 20px;font-size:15.5px;color:var(--muted);line-height:1.6}
+
+  /* ---------- Contact ---------- */
+  .contact-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:44px;align-items:start}
+  .contact-copy h2{font-size:clamp(28px,3.4vw,42px);font-weight:800;letter-spacing:-.03em;color:var(--heading)}
+  .contact-copy p{margin-top:16px;font-size:17px;color:var(--muted);max-width:420px}
+  .contact-list{margin-top:28px;display:flex;flex-direction:column;gap:14px}
+  .contact-list li{display:flex;align-items:center;gap:12px;font-size:15px;color:var(--ink);list-style:none}
+  .contact-list .ic{width:36px;height:36px;border-radius:10px;background:var(--brand-soft);display:grid;place-items:center;flex:0 0 auto}
+  form.lead{background:#fff;border:1px solid var(--line);border-radius:var(--r-md);padding:30px;box-shadow:var(--shadow-md)}
+  .frow{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px}
+  .field{display:flex;flex-direction:column;gap:6px}
+  .field.full{grid-column:1/-1}
+  .field label{font-size:13px;font-weight:600;color:var(--ink)}
+  .field input,.field select,.field textarea{
+    font-family:inherit;font-size:15px;color:var(--ink);
+    border:1px solid var(--line);border-radius:11px;padding:11px 13px;background:#fbfcfd;outline:0;
+    transition:border-color .15s,box-shadow .15s;width:100%;
+  }
+  .field textarea{resize:vertical;min-height:96px}
+  .field input:focus,.field select:focus,.field textarea:focus{border-color:var(--brand);box-shadow:0 0 0 3px var(--brand-soft);background:#fff}
+  .consent{display:flex;gap:10px;align-items:flex-start;font-size:13px;color:var(--muted);margin:4px 0 16px}
+  .consent input{margin-top:3px}
+
+  /* ---------- Footer ---------- */
+  footer.ft{margin-top:20px;padding:56px 0 26px}
+  .ft-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:32px}
+  .ft-brand p{margin-top:16px;font-size:14.5px;color:var(--muted);max-width:280px}
+  .ft-social{margin-top:20px;display:flex;gap:10px}
+  .ft-social a{width:38px;height:38px;border-radius:10px;border:1px solid var(--line);display:grid;place-items:center;color:#57616d;transition:.15s}
+  .ft-social a:hover{border-color:var(--brand);color:var(--brand-600)}
+  .ft-col h4{font-size:13px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:var(--heading)}
+  .ft-col a{display:block;margin-top:12px;font-size:14.5px;color:var(--muted)}
+  .ft-col a:hover{color:var(--brand-600)}
+  .ft-bottom{margin-top:40px;padding-top:22px;border-top:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;font-size:13.5px;color:var(--faint)}
+
+  /* ---------- Responsive ---------- */
+  @media (max-width:1000px){
+    .hero-grid{grid-template-columns:1fr;gap:52px}
+    .contact-grid{grid-template-columns:1fr}
+    .feat-grid,.sol-grid,.flag-grid,.steps,.tgrid{grid-template-columns:repeat(2,1fr)}
+    .ft-grid{grid-template-columns:1fr 1fr}
+  }
+  @media (max-width:720px){
+    nav.links,.nav-right .desk{display:none}
+    .menu-btn{display:grid}
+    .stats-inner{grid-template-columns:repeat(2,1fr)}
+    .stat:nth-child(3)::before,.stat:nth-child(2)::before{content:none}
+    .feat-grid,.sol-grid,.flag-grid,.steps,.tgrid,.frow,.ft-grid{grid-template-columns:1fr}
+    .bubble{font-size:12px;padding:7px 12px}
+    .b2,.b5,.b6{display:none}
+    section.block{padding:60px 0}
+    .grants{padding:36px}
+    .shell{padding:0 10px}
+  }
+</style>
+</head>
+<body>
+
+<div class="shell">
+  <div class="card-shell">
+
+    <!-- NAV -->
+    <header class="nav">
+      <div class="wrap nav-inner">
+        <a class="brand" href="#top">
+          <img src="assets/starhub-logo.svg" alt="StarHub" />
+          StarHub
+          <span class="divider"></span>
+        </a>
+        <nav class="links">
+          <a href="#flagships">AI Marketplace</a>
+          <a href="#flagships">Products <span class="caret"></span></a>
+        </nav>
+        <div class="nav-right">
+          <nav class="links desk">
+            <a href="#workforce">About</a>
+            <a href="#faq">Resources</a>
+            <a href="mailto:hello@starhub.ai">Contact</a>
+          </nav>
+          <a href="mailto:hello@starhub.ai" class="btn btn-primary">Talk to us</a>
+          <button class="menu-btn" aria-label="Menu">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#39424e" stroke-width="2"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <span id="top"></span>
+
+    <!-- HERO -->
+    <section class="hero">
+      <div class="wrap">
+        <div class="hero-grid">
+          <div class="hero-copy">
+            <h1 class="hero-title">Get the AI<br/>you Want for<br/><span class="g">Growth</span></h1>
+            <p class="hero-sub">Brand-grade AI employees and trusted partner integrations — deployed for your small business, live in days.</p>
+            <div class="hero-cta">
+              <a href="#flagships" class="btn btn-primary btn-lg">Browse the marketplace</a>
+              <a href="mailto:hello@starhub.ai" class="btn btn-ghost btn-lg">Talk to us</a>
+            </div>
+          </div>
+
+          <div class="hero-visual">
+            <div class="hero-photo">
+              <img src="assets/hero-person.jpg" alt="Small business owner smiling" />
+            </div>
+            <div class="bubble b1"><span class="dot"></span>Answers customers 24/7</div>
+            <div class="bubble b2"><span class="dot"></span>Reads invoices</div>
+            <div class="bubble b3"><span class="dot"></span>Speaks your brand</div>
+            <div class="bubble b4"><span class="dot"></span>AI documentation</div>
+            <div class="bubble b5"><span class="dot"></span>Books appointments</div>
+            <div class="bubble b6"><span class="dot"></span>Qualifies leads</div>
+            <div class="callout"><b>Meet your 24/7 AI employee</b><br/><span class="live">● live now</span></div>
+          </div>
+        </div>
+
+        <!-- SEARCH -->
+        <div class="search-row">
+          <form class="searchbar" onsubmit="return false">
+            <span class="search-ico">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+            </span>
+            <input type="text" placeholder="Search flagships, partners &amp; integrations" aria-label="Search the marketplace" />
+            <button class="btn btn-primary" type="submit">Search</button>
+          </form>
+        </div>
+
+        <!-- TRUST -->
+        <div class="trust">
+          <div class="trust-label">Powered by a Trusted Stack</div>
+          <div class="logos">
+            <span class="logo-item"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>WhatsApp</span>
+            <span class="logo-item"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.3041 3.541h-3.6718l6.696 16.918H24Zm-10.6082 0L0 20.459h3.7442l1.3693-3.5527h7.0052l1.3693 3.5528h3.7442L10.5363 3.5409Zm-.3712 10.2232 2.2914-5.9456 2.2914 5.9456Z"/></svg>Anthropic</span>
+            <span class="logo-item"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13.976 9.15c-2.172-.806-3.356-1.426-3.356-2.409 0-.831.683-1.305 1.901-1.305 2.227 0 4.515.858 6.09 1.631l.89-5.494C18.252.975 15.697 0 12.165 0 9.667 0 7.589.654 6.104 1.872 4.56 3.147 3.757 4.992 3.757 7.218c0 4.039 2.467 5.76 6.476 7.219 2.585.92 3.445 1.574 3.445 2.583 0 .98-.84 1.545-2.354 1.545-1.875 0-4.965-.921-6.99-2.109l-.9 5.555C5.175 22.99 8.385 24 11.714 24c2.641 0 4.843-.624 6.328-1.813 1.664-1.305 2.525-3.236 2.525-5.732 0-4.128-2.524-5.851-6.594-7.305h.003z"/></svg>Stripe</span>
+            <span class="logo-item">
+              <svg class="aws-smile" viewBox="0 0 40 30" aria-hidden="true"><text x="0" y="17" font-family="Inter,Arial,sans-serif" font-weight="800" font-size="15" fill="currentColor" letter-spacing="-.5">aws</text><path d="M2 23c9 5 27 5 36 0" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"/><path d="M34 20l4 3-4 2.6" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
+            <span class="logo-item"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12.19 2.38a9.344 9.344 0 0 0-9.234 6.893c.053-.02-.055.013 0 0-3.875 2.551-3.922 8.11-.247 10.941l.006-.007-.007.03a6.717 6.717 0 0 0 4.077 1.356h5.173l.03.03h5.192c6.687.053 9.376-8.605 3.835-12.35a9.365 9.365 0 0 0-2.821-4.552l-.043.043.006-.05A9.344 9.344 0 0 0 12.19 2.38zm-.358 4.146c1.244-.04 2.518.368 3.486 1.15a5.186 5.186 0 0 1 1.862 4.078v.518c3.53-.07 3.53 5.262 0 5.193h-5.193l-.008.009v-.04H6.785a2.59 2.59 0 0 1-1.067-.23h.001a2.597 2.597 0 1 1 3.437-3.437l3.013-3.012A6.747 6.747 0 0 0 8.11 8.24c.018-.01.04-.026.054-.023a5.186 5.186 0 0 1 3.67-1.69z"/></svg>Google&nbsp;Cloud</span>
+            <span class="logo-item"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.915 4.03c-1.968 0-3.683 1.28-4.871 3.113C.704 9.208 0 11.883 0 14.449c0 .706.07 1.369.21 1.973a6.624 6.624 0 0 0 .265.86 5.297 5.297 0 0 0 .371.761c.696 1.159 1.818 1.927 3.593 1.927 1.497 0 2.633-.671 3.965-2.444.76-1.012 1.144-1.626 2.663-4.32l.756-1.339.186-.325c.061.1.121.196.183.3l2.152 3.595c.724 1.21 1.665 2.556 2.47 3.314 1.046.987 1.992 1.22 3.06 1.22 1.075 0 1.876-.355 2.455-.843a3.743 3.743 0 0 0 .81-.973c.542-.939.861-2.127.861-3.745 0-2.72-.681-5.357-2.084-7.45-1.282-1.912-2.957-2.93-4.716-2.93-1.047 0-2.088.467-3.053 1.308-.652.57-1.257 1.29-1.82 2.05-.69-.875-1.335-1.547-1.958-2.056-1.182-.966-2.315-1.303-3.454-1.303zm10.16 2.053c1.147 0 2.188.758 2.992 1.999 1.132 1.748 1.647 4.195 1.647 6.4 0 1.548-.368 2.9-1.839 2.9-.58 0-1.027-.23-1.664-1.004-.496-.601-1.343-1.878-2.832-4.358l-.617-1.028a44.908 44.908 0 0 0-1.255-1.98c.07-.109.141-.224.211-.327 1.12-1.667 2.118-2.602 3.358-2.602zm-10.201.553c1.265 0 2.058.791 2.675 1.446.307.327.737.871 1.234 1.579l-1.02 1.566c-.757 1.163-1.882 3.017-2.837 4.338-1.191 1.649-1.81 1.817-2.486 1.817-.524 0-1.038-.237-1.383-.794-.263-.426-.464-1.13-.464-2.046 0-2.221.63-4.535 1.66-6.088.454-.687.964-1.226 1.533-1.533a2.264 2.264 0 0 1 1.088-.285z"/></svg>Meta</span>
+          </div>
+        </div>
+
+        <!-- STATS -->
+        <div class="stats">
+          <div class="stats-inner">
+            <div class="stat"><div class="num">900K+</div><div class="lbl">Businesses served</div></div>
+            <div class="stat"><div class="num">5M+</div><div class="lbl">Conversations handled</div></div>
+            <div class="stat"><div class="num">4.9/5</div><div class="lbl">Average rating</div></div>
+            <div class="stat"><div class="num">24/7</div><div class="lbl">Always-on support</div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- WORKFORCE -->
+    <section class="block" id="workforce" style="background:var(--ombre-wash),#fbfcfd;border-top:1px solid var(--line-soft)">
+      <div class="wrap">
+        <div class="bento">
+
+          <div class="bcard b-hero">
+            <h2>A whole <span class="grad">AI workforce</span>, built bespoke for you</h2>
+            <p>Pick a role, we tailor it to your business, and it goes live across your channels — no code, no long onboarding.</p>
+            <div class="roles">
+              <div class="role-icons">
+                <span class="ri"><svg viewBox="0 0 24 24"><path d="M5 4h4l2 5-3 2a12 12 0 006 6l2-3 5 2v4a2 2 0 01-2 2A16 16 0 013 6a2 2 0 012-2z"/></svg></span>
+                <span class="ri"><svg viewBox="0 0 24 24"><path d="M4 4h16v11H8l-4 4z"/></svg></span>
+                <span class="ri"><svg viewBox="0 0 24 24"><path d="M6 3h8l4 4v14H6z"/><path d="M14 3v4h4"/></svg></span>
+                <span class="ri"><svg viewBox="0 0 24 24"><path d="M3 11v2l14 5V6L3 11z"/><path d="M17 8a3 3 0 010 8"/></svg></span>
+                <span class="ri"><svg viewBox="0 0 24 24"><circle cx="9" cy="8" r="3"/><circle cx="16" cy="9" r="2.5"/><path d="M4 20a5 5 0 0110 0M14 20a4 4 0 016-3.4"/></svg></span>
+              </div>
+              <span class="more">+12 roles</span>
+            </div>
+          </div>
+
+          <div class="bcard b-stat b-stat1">
+            <div class="num">24/7</div>
+            <p>Always on — nights, weekends, peak hours.</p>
+          </div>
+          <div class="bcard b-stat b-stat2">
+            <div class="num">17+</div>
+            <p>AI employees across front-desk, back-office, and internal teams.</p>
+          </div>
+
+          <div class="bcard b-chat">
+            <div class="chat-in">Do you have any slots this Friday?</div>
+            <div class="chat-out">Yes — 2pm or 4:30pm. Shall I book you in? ✅</div>
+          </div>
+
+          <div class="bcard b-mini b-lang">
+            <div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#2b9a49" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a15 15 0 010 18M12 3a15 15 0 000 18"/></svg></div>
+            <h3>Speaks your languages</h3>
+            <p>EN · 中文 · Malay · Tamil.</p>
+          </div>
+          <div class="bcard b-mini b-omni">
+            <div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#2b9a49" stroke-width="2"><path d="M4 4h16v12H5.2L4 18z"/><path d="M8 9h8M8 12h5"/></svg></div>
+            <h3>Omnichannel</h3>
+            <p>Web, WhatsApp, phone, email.</p>
+          </div>
+
+          <div class="bcard b-onbrand">
+            <h3>On-brand from day one</h3>
+            <p>Trained on your content, tone, and rules — every reply sounds like you, not a robot.</p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- INDUSTRY SOLUTIONS -->
+    <section class="block">
+      <div class="wrap">
+        <span class="eyebrow">By industry</span>
+        <h2 class="sec-title">Made for how your <span class="grad">business actually runs</span></h2>
+        <div class="sol-grid">
+          <div class="sol">
+            <img src="assets/sme-cafe-bright.jpg" alt="Café" />
+            <div class="sol-body">
+              <div class="tag">Cafés &amp; F&amp;B</div>
+              <h3>Never miss a booking or a call</h3>
+              <p>Takes reservations, answers menu questions, and handles the phone during the rush.</p>
+            </div>
+          </div>
+          <div class="sol">
+            <img src="assets/sme-retail-bright.jpg" alt="Retail" />
+            <div class="sol-body">
+              <div class="tag">Retail &amp; shops</div>
+              <h3>Know your stock, delight every shopper</h3>
+              <p>Checks stock and pricing, tracks orders, and upsells across web and WhatsApp.</p>
+            </div>
+          </div>
+          <div class="sol">
+            <img src="assets/sme-office-bright.jpg" alt="Services" />
+            <div class="sol-body">
+              <div class="tag">Services &amp; teams</div>
+              <h3>Automate the back office</h3>
+              <p>Reads invoices, schedules crews, and routes the busywork so your team can focus.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FLAGSHIPS -->
+    <section class="block" id="flagships" style="background:radial-gradient(1100px 500px at 20% 6%,rgba(76,196,110,.14),transparent 60%),#fbfcfd;border-top:1px solid var(--line-soft);border-bottom:1px solid var(--line-soft)">
+      <div class="wrap">
+        <div class="flag-head">
+          <div>
+            <span class="eyebrow">Brand flagships</span>
+            <h2 class="sec-title">Enterprise-grade AI employees, <span class="grad">ready to hire</span></h2>
+          </div>
+          <a href="mailto:hello@starhub.ai" class="btn btn-ghost">List your integration</a>
+        </div>
+        <div class="flag-grid" id="flagGrid"></div>
+      </div>
+    </section>
+
+    <!-- STEPS -->
+    <section class="block">
+      <div class="wrap center" style="max-width:640px">
+        <span class="eyebrow">Live in 3 steps</span>
+        <h2 class="sec-title">From pick to production <span class="grad">in days</span></h2>
+        <p class="sec-sub">Follow the journey — from browsing the marketplace to a full AI workforce running around the clock.</p>
+      </div>
+      <div class="wrap">
+        <div class="stepper" id="stepper">
+          <div class="stepper-line"><div class="fill"></div></div>
+          <div class="step" data-i="0">
+            <div class="n">1</div>
+            <span class="badge">Step 01</span>
+            <h3>Pick a flagship</h3>
+            <p>Browse the marketplace and choose the AI employees that fit your business.</p>
+          </div>
+          <div class="step" data-i="1">
+            <div class="n">2</div>
+            <span class="badge">Step 02</span>
+            <h3>Connect &amp; customise</h3>
+            <p>Plug in your channels and knowledge — we tune the AI to your brand voice.</p>
+          </div>
+          <div class="step" data-i="2">
+            <div class="n">3</div>
+            <span class="badge">Step 03</span>
+            <h3>Go live 24/7</h3>
+            <p>Your new AI workforce starts answering, booking, and processing — around the clock.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TESTIMONIALS -->
+    <section class="block" style="background:#fbfcfd;border-top:1px solid var(--line-soft)">
+      <div class="wrap center" style="max-width:640px">
+        <span class="eyebrow">Proof</span>
+        <h2 class="sec-title">Trusted by teams <span class="grad">across Singapore</span></h2>
+      </div>
+      <div class="wrap">
+        <div class="tgrid" id="quoteGrid"></div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="block" id="faq" style="background:#fbfcfd;border-top:1px solid var(--line-soft)">
+      <div class="wrap center" style="max-width:640px">
+        <span class="eyebrow">FAQ</span>
+        <h2 class="sec-title">Questions, <span class="grad">answered</span></h2>
+      </div>
+      <div class="wrap">
+        <div class="faq" id="faqList"></div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="ft">
+      <div class="wrap">
+        <div class="ft-grid">
+          <div class="ft-brand">
+            <a class="brand" href="#top"><img src="assets/starhub-logo.svg" alt="StarHub" />StarHub</a>
+            <p>The AI Marketplace for growing businesses. Brand flagships and trusted partner integrations, deployed for you.</p>
+            <div class="ft-social">
+              <a href="#" aria-label="LinkedIn"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5A2.5 2.5 0 112.5 6 2.5 2.5 0 014.98 3.5zM3 8.98h4V21H3zM9 8.98h3.8v1.64h.05a4.2 4.2 0 013.78-2.08c4 0 4.77 2.64 4.77 6.06V21h-4v-5.4c0-1.29 0-2.94-1.8-2.94s-2.06 1.4-2.06 2.85V21H9z"/></svg></a>
+              <a href="#" aria-label="X"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18.9 2H22l-7 8 8.2 12h-6.5l-5-6.6L6 22H2.8l7.5-8.6L2.4 2h6.7l4.6 6zM17.7 20h1.8L7.3 3.9H5.4z"/></svg></a>
+              <a href="#" aria-label="YouTube"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M23 12s0-3.2-.4-4.7a2.5 2.5 0 00-1.8-1.8C19.3 5 12 5 12 5s-7.3 0-8.8.5A2.5 2.5 0 001.4 7.3C1 8.8 1 12 1 12s0 3.2.4 4.7a2.5 2.5 0 001.8 1.8C4.7 19 12 19 12 19s7.3 0 8.8-.5a2.5 2.5 0 001.8-1.8C23 15.2 23 12 23 12zM10 15V9l5 3z"/></svg></a>
+            </div>
+          </div>
+          <div class="ft-col">
+            <h4>Marketplace</h4>
+            <a href="#flagships">Brand Flagships</a>
+            <a href="#flagships">Trusted Partnerships</a>
+            <a href="#workforce">Custom Solutions</a>
+          </div>
+          <div class="ft-col">
+            <h4>Flagships</h4>
+            <a href="#flagships">AI Chatbot</a>
+            <a href="#flagships">AI Voice Agent</a>
+            <a href="#flagships">AI Finance Clerk</a>
+            <a href="#flagships">AI Receptionist</a>
+          </div>
+          <div class="ft-col">
+            <h4>Company</h4>
+            <a href="#faq">Resources</a>
+            <a href="#faq">Grants</a>
+            <a href="mailto:hello@starhub.ai">Contact</a>
+          </div>
+        </div>
+        <div class="ft-bottom">
+          <span>© 2026 StarHub Ltd. All rights reserved.</span>
+          <span>Privacy · Terms · Cookies</span>
+        </div>
+      </div>
+    </footer>
+
+  </div>
+</div>
+
+<script>
+  const flagships = [
+    {n:"AI Chatbot",c:"Conversational AI",r:"4.9",d:"A 24/7 assistant that answers customers, captures leads, and books appointments across web & WhatsApp.",f:["Web","WhatsApp","Lead capture"]},
+    {n:"AI Voice Agent",c:"Voice AI",r:"4.8",d:"Automated voice answering and call handling for your front desk, around the clock.",f:["Inbound calls","IVR","Booking"]},
+    {n:"AI Insights",c:"Analytics",r:"4.9",d:"Turn your business data into decisions with AI-powered analytics and reporting.",f:["Dashboards","Forecasts","Alerts"]},
+    {n:"AI Receptionist",c:"Front Desk AI",r:"4.8",d:"An always-on front desk that answers calls and messages, books appointments, and routes the rest to your team.",f:["Inbound","Booking","Routing"]},
+    {n:"AI Knowledge Assistant",c:"Internal Copilot",r:"4.9",d:"An internal expert that answers staff questions from your SOPs, policies, and product docs.",f:["RAG","Slack/Teams","Search"]},
+    {n:"AI Finance Clerk",c:"Finance Automation",r:"4.8",d:"Reads invoices and receipts, codes them, matches purchase orders, and preps payment runs.",f:["AP/AR","OCR","Reconciliation"]},
+    {n:"AI Marketing Studio",c:"Marketing AI",r:"4.7",d:"Produces social posts, ad copy, EDMs, and SEO pages in your brand voice.",f:["Content","Social","SEO"]},
+    {n:"AI Document Processor",c:"Document AI",r:"4.8",d:"Turns contracts, claims, forms, and IDs into structured data your systems can use.",f:["OCR","Extraction","Workflow"]},
+    {n:"AI Recruiter",c:"HR AI",r:"4.7",d:"Screens applicants, answers candidate questions, schedules interviews, and hands you a ranked shortlist.",f:["Screening","Scheduling","Shortlist"]},
+    {n:"AI Compliance Officer",c:"Risk & Compliance",r:"4.9",d:"Runs onboarding checks, verifies documents, screens for risk, and keeps a clean audit trail.",f:["KYC","AML","Audit trail"]},
+    {n:"AI Retail Assistant",c:"Commerce AI",r:"4.8",d:"Answers product questions, checks stock and pricing, tracks orders, and upsells across web and WhatsApp.",f:["Catalog","Orders","Upsell"]},
+    {n:"AI Multilingual Agent",c:"Localization AI",r:"4.9",d:"Serves customers in English, 中文, Malay, and Tamil across any channel.",f:["EN/中文/BM/TA","Omnichannel","Auto-detect"]}
+  ];
+  const flagGrid = document.getElementById('flagGrid');
+  flagGrid.innerHTML = flagships.map(p=>`
+    <article class="flag">
+      <span class="cat">${p.c}</span>
+      <h3>${p.n}</h3>
+      <p>${p.d}</p>
+      <div class="chips">${p.f.map(x=>`<span class="chip">${x}</span>`).join('')}</div>
+      <a href="mailto:hello@starhub.ai" class="flag-link">Deploy this flagship <span class="arw">→</span></a>
+    </article>`).join('');
+
+  const quotes = [
+    {q:"StarHub's CRM tracks every event booking from first inquiry to signed contract. We stopped losing leads overnight.",a:"MT",n:"Operations Lead",co:"Musical Touch"},
+    {q:"The AI builds our staff schedules automatically and keeps inventory and appointments in one place.",a:"WP",n:"Boutique Manager",co:"Watch Palace"},
+    {q:"Invoices used to pile up. Now the AI reads, organizes, and routes them automatically.",a:"CR",n:"Finance Director",co:"Creador"},
+    {q:"Our front desk never sleeps now. After-hours enquiries get answered and booked before we're back in.",a:"HS",n:"Clinic Owner",co:"Harmony Health"},
+    {q:"Cold outreach used to eat our week. The AI works the list and we only jump on the genuinely warm ones.",a:"AP",n:"Sales Director",co:"Apex Partners"},
+    {q:"We went live in under a week and a grant covered most of the cost. It just works.",a:"SG",n:"Founder",co:"Sprout & Co"}
+  ];
+  document.getElementById('quoteGrid').innerHTML = quotes.map(t=>`
+    <figure class="quote">
+      <div class="stars">★★★★★</div>
+      <p>"${t.q}"</p>
+      <figcaption class="who">
+        <span class="av">${t.a}</span>
+        <span><b>${t.n}</b><span>${t.co}</span></span>
+      </figcaption>
+    </figure>`).join('');
+
+  const faqs = [
+    ["How is StarHub AI different from off-the-shelf tools?","Every flagship is tuned to your brand voice, knowledge, and workflows — and deployed across your real channels. You get an enterprise-grade AI employee, not a generic chatbot."],
+    ["Do I need any technical skills or code?","No. We connect your channels and knowledge for you, and you manage everything from a simple dashboard."],
+    ["How quickly can we go live?","Most businesses are live within days. Pick a flagship, connect and customise, and go 24/7."],
+    ["Which channels do the AI employees work across?","Web, WhatsApp, phone, and email — one AI workforce deployed omnichannel, with auto-detected multilingual support."],
+    ["Can government grants cover the cost?","Often, yes. Singapore SMEs can offset costs through digitalisation grants — we'll help you check eligibility."],
+    ["Can I see it before committing?","Absolutely. Talk to us and we'll show you a live AI employee working on your use case."],
+    ["How do we get started?","Browse the marketplace or talk to us, and we'll recommend the flagships that fit your business."]
+  ];
+  document.getElementById('faqList').innerHTML = faqs.map(([q,a])=>`
+    <details class="q">
+      <summary>${q}<span class="plus">+</span></summary>
+      <div class="ans">${a}</div>
+    </details>`).join('');
+
+  // ---- Interactive stepper ----
+  (function(){
+    const stepper = document.getElementById('stepper');
+    if(!stepper) return;
+    const steps = [...stepper.querySelectorAll('.step')];
+    const fill = stepper.querySelector('.stepper-line .fill');
+    const reduce = window.matchMedia('(prefers-reduced-motion:reduce)').matches;
+    let idx = 0, timer = null;
+    function setActive(i){
+      idx = i;
+      steps.forEach((el,k)=>el.classList.toggle('is-active', k===i));
+      if(fill) fill.style.width = (steps.length>1 ? (i/(steps.length-1))*100 : 0) + '%';
+    }
+    function play(){ if(reduce) return; stop(); timer = setInterval(()=>setActive((idx+1)%steps.length), 2600); }
+    function stop(){ if(timer){ clearInterval(timer); timer = null; } }
+    steps.forEach((el,i)=>el.addEventListener('click', ()=>{ setActive(i); play(); }));
+    stepper.addEventListener('mouseenter', stop);
+    stepper.addEventListener('mouseleave', play);
+    setActive(0);
+    // start once scrolled into view
+    if('IntersectionObserver' in window){
+      const io = new IntersectionObserver((es)=>{ es.forEach(e=>{ if(e.isIntersecting){ play(); } else { stop(); } }); }, {threshold:.4});
+      io.observe(stepper);
+    } else { play(); }
+  })();
+</script>
+</body>
+</html>
