@@ -80,6 +80,20 @@
   .spec .chips{margin-top:12px;display:flex;flex-wrap:wrap;gap:6px}
   .spec .chip{font-size:11.5px;font-weight:600;color:#41505c;background:#f2f5f7;border:1px solid #e7ebef;padding:4px 9px;border-radius:999px}
   .spec .live{margin-top:14px;font-size:12px;font-weight:700;color:var(--brand-600)}
+  .voice{padding:20px 18px;text-align:center}
+  .voice-ic{width:54px;height:54px;border-radius:50%;background:var(--grad-brand);display:grid;place-items:center;margin:2px auto 10px;box-shadow:0 10px 20px -6px rgba(46,190,90,.6)}
+  .voice-ic svg{width:24px;height:24px;stroke:#fff;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+  .voice b{font-size:14px;color:var(--heading);display:block}
+  .voice .st{font-size:11px;color:var(--brand-600);font-weight:700;margin-top:2px}
+  .wave{display:flex;align-items:center;justify-content:center;gap:3px;height:46px;margin:16px 0 18px}
+  .wave i{width:3.5px;border-radius:3px;background:var(--grad-brand);height:30%;animation:wave 1.1s ease-in-out infinite}
+  @keyframes wave{0%,100%{height:22%}50%{height:100%}}
+  @media (prefers-reduced-motion:reduce){.wave i{animation:none;height:55%}}
+  .voice-ctrl{display:flex;justify-content:center;gap:14px}
+  .vbtn{width:40px;height:40px;border-radius:50%;display:grid;place-items:center;border:1px solid var(--line);background:#fff}
+  .vbtn svg{width:17px;height:17px;stroke:#5c6672;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+  .vbtn.hang{background:#ef4444;border:0;box-shadow:0 8px 16px -6px rgba(239,68,68,.5)}
+  .vbtn.hang svg{stroke:#fff}
 
   .trust{margin-top:74px;text-align:center}
   .trust-label{font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--faint)}
@@ -368,8 +382,8 @@
 
     'voice-agent':{n:'AI Voice Agent',c:'Voice AI',g:'customer',mic:'mic',photo:'assets/sme-office-bright.jpg',
       sub:'Automated voice answering and call handling for your front desk — around the clock, with a natural local accent.',
-      f:['Inbound calls','IVR','Booking'], demo:'chat',
-      chat:[['in','☎ Incoming call'],['out','"Thanks for calling! How can I help today?"'],['in','"Are you open Sunday?"'],['out','"Yes, 10am–6pm. Shall I book you a table?" ✅']],
+      f:['Inbound calls','IVR','Booking'], demo:'voice',
+      built:[['assets/sme-office-bright.jpg','Clinics & Services','Manage appointments and reminders without tying up reception.'],['assets/hero-person.jpg','Front desks & receptions','Cover every after-hours and peak enquiry automatically.'],['assets/sme-cafe-bright.jpg','F&B & Bookings','Take reservations and diner-out queries efficiently.']],
       what:[['phone','Answers every call','Picks up on the first ring, day or night, so no caller hits voicemail.'],['route','Routes intelligently','Understands intent and routes or escalates to the right person.'],['cal','Books over the phone','Takes bookings and reservations straight into your calendar.'],['list','Logs & summarises','Every call transcribed, summarised, and logged for your team.']],
       ba:[['Missed calls during peak hours meant missed revenue.','Zero missed calls — every caller is answered and handled instantly.'],['Staff tied up on the phone instead of serving customers.','The AI fields routine calls so your team focuses on in-person service.']],
       faq:[['Does it sound robotic?','No — it uses a natural, local-accent voice and conversational phrasing callers find easy to talk to.'],['Can it transfer to a human?','Yes — it escalates to your team with full context whenever a call needs a person.']]},
@@ -501,6 +515,10 @@
     float.innerHTML = '<div class="cw-top"><span class="cw-av">'+svg('chat')+'</span><div><b>StarHub Assistant</b><br/><span class="on">● Online</span></div></div><div class="cw-body" id="chat"></div>';
     const chat = float.querySelector('#chat');
     d.chat.forEach((c,i)=>{ const el=document.createElement('div'); el.className='msg '+c[0]+(reduce?'':' reveal'); el.textContent=c[1]; if(!reduce) el.style.animationDelay=(0.5+i*0.7)+'s'; chat.appendChild(el); });
+  } else if(d.demo === 'voice'){
+    float.classList.add('voice');
+    const bars = Array.from({length:18},(_,k)=>`<i style="animation-delay:${(k*0.07).toFixed(2)}s"></i>`).join('');
+    float.innerHTML = `<div class="voice-ic">${svg('mic')}</div><b>Console</b><div class="st">● AI phone routine</div><div class="wave">${bars}</div><div class="voice-ctrl"><span class="vbtn">${svg('mic')}</span><span class="vbtn hang">${svg('phone')}</span><span class="vbtn">${svg('grid')}</span></div>`;
   } else {
     float.classList.add('spec');
     float.innerHTML = '<div class="spec-ic">'+svg(d.mic)+'</div><b>'+d.n+'</b>'+
@@ -513,7 +531,7 @@
 
   // built for
   document.getElementById('builtTitle').innerHTML = 'Built for <span class="gt">'+builtTitleByGroup[d.g]+'</span>';
-  document.getElementById('builtGrid').innerHTML = BUILT[d.g].map(b=>`<div class="sol"><img src="${b[0]}" alt="${b[1]}" /><div class="sol-body"><h3>${b[1]}</h3><p>${b[2]}</p></div></div>`).join('');
+  document.getElementById('builtGrid').innerHTML = (d.built||BUILT[d.g]).map(b=>`<div class="sol"><img src="${b[0]}" alt="${b[1]}" /><div class="sol-body"><h3>${b[1]}</h3><p>${b[2]}</p></div></div>`).join('');
 
   // before / after
   document.getElementById('baList').innerHTML = d.ba.map(r=>`<div class="ba-row"><div class="ba-cell ba-before"><span class="ba-tag"><span class="dot">✕</span>Before</span><p>${r[0]}</p></div><div class="ba-cell ba-after"><span class="ba-tag"><span class="dot">✓</span>After</span><p>${r[1]}</p></div></div>`).join('');
