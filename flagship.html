@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Flagship — StarHub AI Marketplace</title>
+<meta name="description" content="StarHub AI Marketplace flagship — enterprise-grade AI employees for your business." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --brand:#31a952;--brand-600:#2b9a49;--brand-700:#1f7d38;--brand-soft:#eaf7ee;
+    --grad-brand:linear-gradient(135deg,#4cc46e 0%,#1f9e4c 100%);
+    --grad-heading:linear-gradient(100deg,#2fae5a 0%,#57cf7c 58%,#8ee6a4 100%);
+    --ombre-card:linear-gradient(155deg,#ffffff 0%,#ffffff 42%,#effaf1 78%,#e4f6e9 100%);
+    --glow-green:0 34px 70px -34px rgba(46,190,90,.45);
+    --heading:#111820;--ink:#1c2530;--muted:#5c6672;--faint:#8a929c;
+    --line:#e8ebef;--line-soft:#eef1f4;--r-lg:34px;--r-md:24px;--r-sm:14px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth;scroll-padding-top:90px}
+  body{font-family:'Inter',system-ui,-apple-system,Segoe UI,Roboto,sans-serif;background:#fff;color:var(--ink);line-height:1.55;-webkit-font-smoothing:antialiased}
+  a{color:inherit;text-decoration:none}
+  img{max-width:100%;display:block}
+  .wrap{max-width:1280px;margin:0 auto;padding:0 clamp(20px,4vw,56px)}
+  .btn{display:inline-flex;align-items:center;gap:8px;font-weight:600;font-size:15px;padding:12px 22px;border-radius:999px;cursor:pointer;border:0;transition:transform .15s,box-shadow .2s,background .2s,filter .2s;white-space:nowrap}
+  .btn-primary{background:var(--grad-brand);color:#fff;box-shadow:0 10px 22px -8px rgba(46,190,90,.65)}
+  .btn-primary:hover{filter:brightness(1.05);transform:translateY(-1px)}
+  .btn-ghost{background:#fff;color:var(--ink);border:1px solid var(--line)}
+  .btn-ghost:hover{border-color:#cfd5dc;transform:translateY(-1px)}
+  .btn-lg{padding:15px 30px;font-size:16px}
+  .gt{background:var(--grad-heading);-webkit-background-clip:text;background-clip:text;color:transparent}
+
+  header.nav{position:sticky;top:0;z-index:60;background:rgba(255,255,255,.86);backdrop-filter:blur(14px);border-bottom:1px solid var(--line-soft)}
+  .nav-inner{display:flex;align-items:center;gap:26px;height:74px}
+  .brand{display:flex;align-items:center;gap:10px;font-weight:800;font-size:20px;letter-spacing:-.02em;color:var(--heading)}
+  .brand img{height:26px;width:auto}
+  .brand .divider{width:1px;height:22px;background:var(--line);margin:0 4px}
+  nav.links{display:flex;align-items:center;gap:26px;font-size:15px;font-weight:500}
+  nav.links a{color:#39424e;transition:color .15s}
+  nav.links a:hover{color:var(--brand-600)}
+  .nav-right{margin-left:auto;display:flex;align-items:center;gap:20px}
+  .nav-right a.talk{font-size:15px;font-weight:600;color:#39424e}
+  .nav-right a.talk:hover{color:var(--brand-600)}
+  .menu-btn{display:none;background:none;border:0;cursor:pointer}
+
+  .hero{padding:52px 0 44px;position:relative;overflow:hidden}
+  .hero::before{content:"";position:absolute;right:-8%;top:-20%;width:52%;height:120%;background:radial-gradient(60% 55% at 60% 40%,rgba(76,196,110,.18),transparent 70%);z-index:0}
+  .hero-grid{position:relative;z-index:1;display:grid;grid-template-columns:1.02fr 1fr;gap:48px;align-items:center}
+  .crumb{display:flex;align-items:center;gap:8px;font-size:14px;font-weight:600;color:var(--faint);margin-bottom:18px}
+  .crumb a{color:var(--brand-600)}
+  .crumb a:hover{text-decoration:underline}
+  .chip-cat{display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;padding:7px 14px;border-radius:999px}
+  .chip-cat .dot{width:7px;height:7px;border-radius:50%;background:currentColor}
+  h1.h{margin-top:18px;font-size:clamp(40px,5.4vw,72px);line-height:.98;font-weight:800;letter-spacing:-.04em;color:var(--heading);text-transform:uppercase}
+  .hero-sub{margin-top:20px;font-size:18px;color:var(--muted);max-width:480px}
+  .hero-cta{margin-top:28px;display:flex;gap:12px;flex-wrap:wrap}
+
+  .hero-visual{position:relative}
+  .hero-photo{border-radius:26px;overflow:hidden;box-shadow:var(--glow-green),0 12px 30px -12px rgba(16,24,40,.14);aspect-ratio:4/3.4;border:5px solid #fff;background:#eef2f0}
+  .hero-photo img{width:100%;height:100%;object-fit:cover}
+  .float{position:absolute;left:-6%;bottom:-8%;width:66%;max-width:300px;background:#fff;border:1px solid var(--line);border-radius:18px;box-shadow:0 24px 50px -20px rgba(16,24,40,.4);overflow:hidden;z-index:2}
+  .cw-top{display:flex;align-items:center;gap:9px;padding:12px 14px;border-bottom:1px solid var(--line-soft);background:linear-gradient(120deg,#fff,#f2fbf5)}
+  .cw-av{width:30px;height:30px;border-radius:50%;background:var(--grad-brand);display:grid;place-items:center}
+  .cw-av svg{width:16px;height:16px;stroke:#fff;fill:none;stroke-width:2}
+  .cw-top b{font-size:13px;color:var(--heading)}
+  .cw-top .on{font-size:11px;color:var(--brand-600);font-weight:600}
+  .cw-body{padding:14px;display:flex;flex-direction:column;gap:9px}
+  .msg{max-width:88%;padding:9px 12px;font-size:12.5px;line-height:1.4}
+  .msg.in{align-self:flex-start;background:#f1f4f6;color:#2b333d;border-radius:13px 13px 13px 4px}
+  .msg.out{align-self:flex-end;background:var(--grad-brand);color:#fff;border-radius:13px 13px 4px 13px;box-shadow:0 8px 16px -8px rgba(46,190,90,.5)}
+  .msg.reveal{opacity:0;transform:translateY(6px);animation:msgIn .5s ease forwards}
+  @keyframes msgIn{to{opacity:1;transform:translateY(0)}}
+  @media (prefers-reduced-motion:reduce){.msg.reveal{opacity:1;transform:none;animation:none}}
+  .spec{padding:20px}
+  .spec-ic{width:46px;height:46px;border-radius:13px;background:var(--grad-brand);display:grid;place-items:center;margin-bottom:14px;box-shadow:0 8px 16px -6px rgba(46,190,90,.5)}
+  .spec-ic svg{width:22px;height:22px;stroke:#fff;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+  .spec b{font-size:15px;color:var(--heading);display:block}
+  .spec .chips{margin-top:12px;display:flex;flex-wrap:wrap;gap:6px}
+  .spec .chip{font-size:11.5px;font-weight:600;color:#41505c;background:#f2f5f7;border:1px solid #e7ebef;padding:4px 9px;border-radius:999px}
+  .spec .live{margin-top:14px;font-size:12px;font-weight:700;color:var(--brand-600)}
+
+  .trust{margin-top:74px;text-align:center}
+  .trust-label{font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--faint)}
+  .logos{margin-top:22px;display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:16px 40px}
+  .logo-item{display:inline-flex;align-items:center;gap:9px;color:#98a1ab;font-weight:700;font-size:17px;letter-spacing:-.01em;opacity:.85}
+  .logo-item svg{width:22px;height:22px;fill:currentColor}
+  .logo-item .aws-smile{width:29px;height:22px}
+
+  .stats{margin-top:40px}
+  .stats-inner{background:#f6f8f9;border:1px solid var(--line-soft);border-radius:var(--r-md);display:grid;grid-template-columns:repeat(4,1fr)}
+  .stat{padding:28px 22px;text-align:center;position:relative}
+  .stat+.stat::before{content:"";position:absolute;left:0;top:22%;height:56%;width:1px;background:var(--line)}
+  .stat .num{font-size:clamp(28px,3.2vw,40px);font-weight:800;letter-spacing:-.03em;line-height:1;background:var(--grad-heading);-webkit-background-clip:text;background-clip:text;color:transparent}
+  .stat .lbl{margin-top:8px;font-size:14px;color:var(--muted);font-weight:500}
+
+  section.block{padding:88px 0}
+  .eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:var(--brand-600);background:var(--brand-soft);padding:7px 14px;border-radius:999px}
+  h2.sec-title{font-size:clamp(30px,3.8vw,44px);line-height:1.06;font-weight:800;letter-spacing:-.03em;color:var(--heading);margin-top:18px}
+  .sec-sub{margin-top:14px;font-size:17px;color:var(--muted);max-width:600px}
+  .center{text-align:center}
+  .center .eyebrow{margin-left:auto;margin-right:auto}
+  .center h2.sec-title,.center .sec-sub{margin-left:auto;margin-right:auto}
+  .head-row{display:flex;align-items:flex-end;justify-content:space-between;gap:20px;flex-wrap:wrap}
+  .view-all{font-size:14px;font-weight:700;color:var(--brand-600)}
+  .view-all:hover{text-decoration:underline}
+
+  .grid4{margin-top:46px;display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+  .card{background:#fff;border:1px solid var(--line);border-radius:var(--r-md);padding:30px;transition:transform .18s,box-shadow .2s,border-color .2s;box-shadow:0 10px 40px rgba(16,24,40,.04)}
+  .card:hover{transform:translateY(-4px);box-shadow:var(--glow-green);border-color:#bfe6c9}
+  .card .ic{width:46px;height:46px;border-radius:13px;background:linear-gradient(135deg,#e9f8ee,#d3f0dc);display:grid;place-items:center;margin-bottom:18px}
+  .card .ic svg{width:22px;height:22px;stroke:var(--brand-700);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+  .card h3{font-size:18px;font-weight:700;color:var(--heading);letter-spacing:-.01em}
+  .card p{margin-top:8px;font-size:14.5px;color:var(--muted)}
+
+  .hiw{position:relative;margin-top:52px;display:grid;grid-template-columns:repeat(3,1fr);gap:24px;text-align:center}
+  .hiw-line{position:absolute;top:27px;left:16.66%;right:16.66%;border-top:2px dashed #c6d8ce;z-index:0}
+  .hiw-step{position:relative;z-index:1}
+  .hiw-num{width:56px;height:56px;margin:0 auto 20px;border-radius:50%;background:var(--grad-brand);color:#fff;display:grid;place-items:center;font-weight:800;font-size:21px;box-shadow:0 12px 24px -8px rgba(46,190,90,.6);border:4px solid #fff}
+  .hiw-step h3{font-size:19px;font-weight:700;color:var(--heading)}
+  .hiw-step p{margin-top:8px;font-size:15px;color:var(--muted);max-width:320px;margin-left:auto;margin-right:auto}
+
+  .grid3{margin-top:44px;display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+  .sol{border-radius:var(--r-md);overflow:hidden;position:relative;min-height:340px;display:flex;align-items:flex-end;box-shadow:var(--glow-green);border:4px solid #fff}
+  .sol img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;transition:transform .5s}
+  .sol:hover img{transform:scale(1.05)}
+  .sol::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,14,20,0) 34%,rgba(10,14,20,.85) 100%);z-index:1}
+  .sol-body{position:relative;z-index:2;padding:24px;color:#fff}
+  .sol-body h3{font-size:21px;font-weight:700;letter-spacing:-.01em}
+  .sol-body p{font-size:14px;color:#d3d8de;margin-top:6px}
+
+  .ba{margin-top:44px;display:flex;flex-direction:column;gap:16px}
+  .ba-row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  .ba-cell{border-radius:var(--r-md);padding:26px 28px}
+  .ba-before{background:#fff;border:1px solid #f1dede;box-shadow:0 10px 40px rgba(16,24,40,.04)}
+  .ba-after{background:linear-gradient(135deg,#f1fbf4,#e5f7eb);border:1px solid #cdeed8}
+  .ba-tag{display:inline-flex;align-items:center;gap:7px;font-size:12px;font-weight:800;letter-spacing:.06em;text-transform:uppercase}
+  .ba-before .ba-tag{color:#df5757}
+  .ba-after .ba-tag{color:var(--brand-700)}
+  .ba-tag .dot{width:16px;height:16px;border-radius:50%;display:grid;place-items:center;font-size:11px;font-weight:700}
+  .ba-before .dot{background:#fdecec;color:#df5757}
+  .ba-after .dot{background:#d3f0dc;color:var(--brand-700)}
+  .ba-cell p{margin-top:12px;font-size:15.5px;line-height:1.5;color:var(--ink)}
+  .ba-after p{font-weight:600;color:var(--heading)}
+
+  .faq{margin-top:40px;max-width:820px;margin-left:auto;margin-right:auto}
+  details.q{border-bottom:1px solid var(--line);padding:4px 4px}
+  details.q summary{list-style:none;cursor:pointer;padding:20px 0;font-size:17px;font-weight:600;color:var(--heading);display:flex;align-items:center;justify-content:space-between;gap:16px}
+  details.q summary::-webkit-details-marker{display:none}
+  details.q .plus{flex:0 0 auto;width:26px;height:26px;border-radius:50%;background:var(--brand-soft);color:var(--brand-600);display:grid;place-items:center;font-weight:700;transition:transform .2s}
+  details.q[open] .plus{transform:rotate(45deg)}
+  details.q .ans{padding:0 0 22px;font-size:15.5px;color:var(--muted);line-height:1.6;max-width:680px}
+
+  .cta{background:linear-gradient(120deg,#0f3d22,#155f33);border-radius:var(--r-lg);padding:64px 40px;color:#fff;text-align:center;position:relative;overflow:hidden}
+  .cta::before{content:"";position:absolute;left:-60px;bottom:-90px;width:320px;height:320px;border-radius:50%;background:radial-gradient(circle,rgba(148,249,144,.28),transparent 68%)}
+  .cta h2{position:relative;font-size:clamp(28px,3.4vw,42px);font-weight:800;letter-spacing:-.02em}
+  .cta p{position:relative;margin:14px auto 0;color:#cdeed8;font-size:17px;max-width:540px}
+  .cta-btns{position:relative;margin-top:28px;display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+  .cta .btn-white{background:#fff;color:var(--brand-700)}
+  .cta .btn-white:hover{background:#eafff0}
+  .cta .btn-outline{background:transparent;color:#fff;border:1px solid rgba(255,255,255,.6)}
+  .cta .btn-outline:hover{background:rgba(255,255,255,.12)}
+
+  footer.ft{padding:56px 0 26px;border-top:1px solid var(--line-soft);background:#fbfcfd}
+  .ft-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:32px}
+  .ft-brand p{margin-top:16px;font-size:14.5px;color:var(--muted);max-width:280px}
+  .ft-col h4{font-size:13px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:var(--heading)}
+  .ft-col a{display:block;margin-top:12px;font-size:14.5px;color:var(--muted)}
+  .ft-col a:hover{color:var(--brand-600)}
+  .ft-bottom{margin-top:40px;padding-top:22px;border-top:1px solid var(--line);display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-size:13.5px;color:var(--faint)}
+
+  @media (max-width:1000px){
+    .hero-grid{grid-template-columns:1fr;gap:64px}
+    .grid4,.grid3{grid-template-columns:repeat(2,1fr)}
+    .stats-inner{grid-template-columns:repeat(2,1fr)}
+    .stat:nth-child(2)::before,.stat:nth-child(3)::before{content:none}
+    .ft-grid{grid-template-columns:1fr 1fr}
+  }
+  @media (max-width:680px){
+    nav.links,.nav-right .desk{display:none}
+    .menu-btn{display:grid}
+    .grid4,.grid3,.hiw,.ba-row,.ft-grid{grid-template-columns:1fr}
+    .hiw-line{display:none}
+    section.block{padding:60px 0}
+    .cta{padding:40px 26px}
+    .float{left:0;bottom:-6%}
+  }
+</style>
+</head>
+<body>
+  <header class="nav">
+    <div class="wrap nav-inner">
+      <a class="brand" href="index.html"><img src="assets/starhub-logo.svg" alt="StarHub" />StarHub<span class="divider"></span></a>
+      <nav class="links">
+        <a href="index.html#flagships">AI Marketplace</a>
+        <a href="index.html#flagships">Solutions</a>
+        <a href="index.html#faq">Pricing</a>
+      </nav>
+      <div class="nav-right">
+        <a class="talk desk" href="mailto:hello@starhub.ai">Talk to us</a>
+        <a href="mailto:hello@starhub.ai" class="btn btn-primary">Request a demo</a>
+        <button class="menu-btn" aria-label="Menu"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#39424e" stroke-width="2"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+      </div>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="wrap">
+      <div class="crumb"><a href="index.html#flagships">AI Marketplace</a> <span>/</span> <span id="crumbName">Flagship</span></div>
+      <div class="hero-grid">
+        <div>
+          <span class="chip-cat" id="cat"><span class="dot"></span><span id="catText"></span></span>
+          <h1 class="h" id="title"></h1>
+          <p class="hero-sub" id="sub"></p>
+          <div class="hero-cta">
+            <a href="mailto:hello@starhub.ai" class="btn btn-primary btn-lg">Request a demo ↗</a>
+            <a href="index.html#flagships" class="btn btn-ghost btn-lg">Explore Solutions</a>
+          </div>
+        </div>
+        <div class="hero-visual">
+          <div class="hero-photo"><img id="heroImg" src="assets/sme-office-bright.jpg" alt="" /></div>
+          <div class="float" id="float"></div>
+        </div>
+      </div>
+
+      <div class="trust">
+        <div class="trust-label">Powered by a Trusted Stack</div>
+        <div class="logos">
+          <span class="logo-item"><svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>WhatsApp</span>
+          <span class="logo-item"><svg viewBox="0 0 24 24"><path d="M17.3041 3.541h-3.6718l6.696 16.918H24Zm-10.6082 0L0 20.459h3.7442l1.3693-3.5527h7.0052l1.3693 3.5528h3.7442L10.5363 3.5409Zm-.3712 10.2232 2.2914-5.9456 2.2914 5.9456Z"/></svg>Anthropic</span>
+          <span class="logo-item"><svg viewBox="0 0 24 24"><path d="M13.976 9.15c-2.172-.806-3.356-1.426-3.356-2.409 0-.831.683-1.305 1.901-1.305 2.227 0 4.515.858 6.09 1.631l.89-5.494C18.252.975 15.697 0 12.165 0 9.667 0 7.589.654 6.104 1.872 4.56 3.147 3.757 4.992 3.757 7.218c0 4.039 2.467 5.76 6.476 7.219 2.585.92 3.445 1.574 3.445 2.583 0 .98-.84 1.545-2.354 1.545-1.875 0-4.965-.921-6.99-2.109l-.9 5.555C5.175 22.99 8.385 24 11.714 24c2.641 0 4.843-.624 6.328-1.813 1.664-1.305 2.525-3.236 2.525-5.732 0-4.128-2.524-5.851-6.594-7.305h.003z"/></svg>Stripe</span>
+          <span class="logo-item"><svg class="aws-smile" viewBox="0 0 40 30"><text x="0" y="17" font-family="Inter,Arial,sans-serif" font-weight="800" font-size="15" fill="currentColor" letter-spacing="-.5">aws</text><path d="M2 23c9 5 27 5 36 0" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"/><path d="M34 20l4 3-4 2.6" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          <span class="logo-item"><svg viewBox="0 0 24 24"><path d="M12.19 2.38a9.344 9.344 0 0 0-9.234 6.893c.053-.02-.055.013 0 0-3.875 2.551-3.922 8.11-.247 10.941l.006-.007-.007.03a6.717 6.717 0 0 0 4.077 1.356h5.173l.03.03h5.192c6.687.053 9.376-8.605 3.835-12.35a9.365 9.365 0 0 0-2.821-4.552l-.043.043.006-.05A9.344 9.344 0 0 0 12.19 2.38zm-.358 4.146c1.244-.04 2.518.368 3.486 1.15a5.186 5.186 0 0 1 1.862 4.078v.518c3.53-.07 3.53 5.262 0 5.193h-5.193l-.008.009v-.04H6.785a2.59 2.59 0 0 1-1.067-.23h.001a2.597 2.597 0 1 1 3.437-3.437l3.013-3.012A6.747 6.747 0 0 0 8.11 8.24c.018-.01.04-.026.054-.023a5.186 5.186 0 0 1 3.67-1.69z"/></svg>Google&nbsp;Cloud</span>
+          <span class="logo-item"><svg viewBox="0 0 24 24"><path d="M6.915 4.03c-1.968 0-3.683 1.28-4.871 3.113C.704 9.208 0 11.883 0 14.449c0 .706.07 1.369.21 1.973a6.624 6.624 0 0 0 .265.86 5.297 5.297 0 0 0 .371.761c.696 1.159 1.818 1.927 3.593 1.927 1.497 0 2.633-.671 3.965-2.444.76-1.012 1.144-1.626 2.663-4.32l.756-1.339.186-.325c.061.1.121.196.183.3l2.152 3.595c.724 1.21 1.665 2.556 2.47 3.314 1.046.987 1.992 1.22 3.06 1.22 1.075 0 1.876-.355 2.455-.843a3.743 3.743 0 0 0 .81-.973c.542-.939.861-2.127.861-3.745 0-2.72-.681-5.357-2.084-7.45-1.282-1.912-2.957-2.93-4.716-2.93-1.047 0-2.088.467-3.053 1.308-.652.57-1.257 1.29-1.82 2.05-.69-.875-1.335-1.547-1.958-2.056-1.182-.966-2.315-1.303-3.454-1.303zm10.16 2.053c1.147 0 2.188.758 2.992 1.999 1.132 1.748 1.647 4.195 1.647 6.4 0 1.548-.368 2.9-1.839 2.9-.58 0-1.027-.23-1.664-1.004-.496-.601-1.343-1.878-2.832-4.358l-.617-1.028a44.908 44.908 0 0 0-1.255-1.98c.07-.109.141-.224.211-.327 1.12-1.667 2.118-2.602 3.358-2.602zm-10.201.553c1.265 0 2.058.791 2.675 1.446.307.327.737.871 1.234 1.579l-1.02 1.566c-.757 1.163-1.882 3.017-2.837 4.338-1.191 1.649-1.81 1.817-2.486 1.817-.524 0-1.038-.237-1.383-.794-.263-.426-.464-1.13-.464-2.046 0-2.221.63-4.535 1.66-6.088.454-.687.964-1.226 1.533-1.533a2.264 2.264 0 0 1 1.088-.285z"/></svg>Meta</span>
+        </div>
+      </div>
+
+      <div class="stats">
+        <div class="stats-inner">
+          <div class="stat"><div class="num">900K+</div><div class="lbl">Businesses served</div></div>
+          <div class="stat"><div class="num">5M+</div><div class="lbl">Conversations handled</div></div>
+          <div class="stat"><div class="num">4.9/5</div><div class="lbl">Average rating</div></div>
+          <div class="stat"><div class="num">24/7</div><div class="lbl">Always-on support</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" style="background:#fbfcfd;border-top:1px solid var(--line-soft)">
+    <div class="wrap center" style="max-width:640px">
+      <span class="eyebrow">What it does</span>
+      <h2 class="sec-title">Your always-on <span class="gt">advantage</span></h2>
+      <p class="sec-sub">Enterprise-grade intelligence for your everyday operations, tailored to your business.</p>
+    </div>
+    <div class="wrap"><div class="grid4" id="whatGrid"></div></div>
+  </section>
+
+  <section class="block">
+    <div class="wrap center" style="max-width:640px">
+      <span class="eyebrow">How it works</span>
+      <h2 class="sec-title">Three simple steps to <span class="gt">going live</span></h2>
+    </div>
+    <div class="wrap">
+      <div class="hiw">
+        <div class="hiw-line"></div>
+        <div class="hiw-step"><div class="hiw-num">1</div><h3>Tell us your goals</h3><p>Share your business goals, systems, and the workflows you want automated.</p></div>
+        <div class="hiw-step"><div class="hiw-num">2</div><h3>We build &amp; integrate</h3><p>Our experts configure it, connect your tools, and test everything end to end.</p></div>
+        <div class="hiw-step"><div class="hiw-num">3</div><h3>Go live with support</h3><p>Launch with ongoing optimisation and 24/7 technical support.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" style="background:#fbfcfd;border-top:1px solid var(--line-soft)">
+    <div class="wrap">
+      <div class="head-row">
+        <div><span class="eyebrow">Built for</span><h2 class="sec-title" id="builtTitle">Built for <span class="gt">growing teams</span></h2></div>
+        <a class="view-all" href="index.html#flagships">View all use cases →</a>
+      </div>
+      <div class="grid3" id="builtGrid"></div>
+    </div>
+  </section>
+
+  <section class="block">
+    <div class="wrap center" style="max-width:640px">
+      <span class="eyebrow">Real problems, real outcomes</span>
+      <h2 class="sec-title">The tangible impact of <span class="gt">switching to AI</span></h2>
+    </div>
+    <div class="wrap"><div class="ba" id="baList"></div></div>
+  </section>
+
+  <section class="block" style="background:#fbfcfd;border-top:1px solid var(--line-soft)">
+    <div class="wrap center" style="max-width:640px">
+      <span class="eyebrow">FAQ</span>
+      <h2 class="sec-title">Good questions, <span class="gt">answered</span></h2>
+    </div>
+    <div class="wrap"><div class="faq" id="faqList"></div></div>
+  </section>
+
+  <section class="block">
+    <div class="wrap">
+      <div class="cta">
+        <h2 id="ctaTitle">Ready to put this AI to work?</h2>
+        <p id="ctaSub">Join 900K+ businesses growing with StarHub. Setup takes less than a day.</p>
+        <div class="cta-btns">
+          <a href="mailto:hello@starhub.ai" class="btn btn-lg btn-white">Get Started Free</a>
+          <a href="mailto:hello@starhub.ai" class="btn btn-lg btn-outline">Book a Live Demo</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="ft">
+    <div class="wrap">
+      <div class="ft-grid">
+        <div class="ft-brand">
+          <a class="brand" href="index.html"><img src="assets/starhub-logo.svg" alt="StarHub" />StarHub</a>
+          <p>Building the future of enterprise intelligence, one conversation at a time.</p>
+        </div>
+        <div class="ft-col"><h4>Product</h4><a href="flagship.html?id=chatbot">AI Chatbot</a><a href="index.html#flagships">Marketplace</a><a href="index.html#flagships">Integrations</a><a href="index.html#faq">Pricing</a></div>
+        <div class="ft-col"><h4>Resources</h4><a href="index.html#faq">Documentation</a><a href="index.html#faq">Blog</a><a href="mailto:hello@starhub.ai">Support</a><a href="index.html#workforce">Community</a></div>
+        <div class="ft-col"><h4>Company</h4><a href="index.html#workforce">About Us</a><a href="mailto:hello@starhub.ai">Careers</a><a href="#">Privacy Policy</a><a href="#">Terms of Service</a></div>
+      </div>
+      <div class="ft-bottom"><span>© 2026 StarHub Ltd. All rights reserved.</span><span>Privacy · Terms · Cookies</span></div>
+    </div>
+  </footer>
+
+<script>
+  const I = {
+    bolt:'M13 3L4 14h6l-1 7 9-11h-6z', mail:'M3 5h18v14H3z M3 7l9 6 9-6', cal:'M3 5h18v16H3z M3 9h18 M8 3v4 M16 3v4',
+    star:'M12 3l2.5 5 5.5.8-4 3.9.9 5.5L12 16.9 7.1 19.2l.9-5.5-4-3.9L9.5 8z', phone:'M5 4h4l2 5-3 2a12 12 0 006 6l2-3 5 2v4a2 2 0 01-2 2A16 16 0 013 6a2 2 0 012-2z',
+    route:'M6 4v6a3 3 0 003 3h6a3 3 0 013 3v4 M3 4h6 M15 17h6 M18 14l3 3-3 3', list:'M8 6h13 M8 12h13 M8 18h13 M3 6h.01 M3 12h.01 M3 18h.01',
+    clock:'M12 3a9 9 0 100 18 9 9 0 000-18z M12 7v5l3 2', shield:'M12 3l7 3v6c0 5-7 9-7 9s-7-4-7-9V6z M9 12l2 2 4-4',
+    search:'M11 4a7 7 0 100 14 7 7 0 000-14z M21 21l-4.3-4.3', box:'M3 8l9-5 9 5v8l-9 5-9-5z M3 8l9 5 9-5 M12 13v8',
+    trend:'M3 17l6-6 4 4 8-8 M21 7v5h-5', cart:'M4 5h2l2 12h10l2-8H7 M9 20a1 1 0 100-2 1 1 0 000 2 M17 20a1 1 0 100-2 1 1 0 000 2',
+    globe:'M12 3a9 9 0 100 18 9 9 0 000-18z M3 12h18 M12 3a15 15 0 010 18 M12 3a15 15 0 000 18', grid:'M4 4h7v7H4z M13 4h7v7h-7z M4 13h7v7H4z M13 13h7v7h-7z',
+    chat:'M21 12a8 8 0 01-11.5 7.2L3 21l1.8-6.5A8 8 0 1121 12z', receipt:'M6 3h12v18l-3-2-3 2-3-2-3 2z M9 8h6 M9 12h6',
+    loop:'M4 9a8 8 0 0114-4l3 2 M20 15a8 8 0 01-14 4l-3-2 M18 3v4h-4 M6 21v-4h4', pen:'M4 20h4L20 8l-4-4L4 16z',
+    doc:'M7 3h7l4 4v14H7z M14 3v4h4 M10 13h5 M10 16h5', tag:'M4 4h7l9 9-7 7-9-9z M8.5 8.5h.01', send:'M22 2L11 13 M22 2l-7 20-4-9-9-4z',
+    filter:'M4 5h16l-6 8v5l-4 2v-7z', chart:'M3 20h18 M7 20v-6 M12 20V8 M17 20v-9', alert:'M12 4l9 16H3z M12 10v4 M12 17h.01',
+    scan:'M4 8V5a1 1 0 011-1h3 M20 8V5a1 1 0 00-1-1h-3 M4 16v3a1 1 0 001 1h3 M20 16v3a1 1 0 01-1 1h-3 M4 12h16',
+    code:'M8 8l-4 4 4 4 M16 8l4 4-4 4 M13 5l-2 14', check:'M4 12l5 5L20 6', book:'M5 4h11a2 2 0 012 2v14H7a2 2 0 01-2-2z M9 8h6 M9 12h4',
+    users:'M9 5a3 3 0 100 6 3 3 0 000-6z M3.5 20a5.5 5.5 0 0111 0 M16 6a3 3 0 010 6 M15 20a5.5 5.5 0 015.5-5',
+    mic:'M9 3h6v10a3 3 0 01-6 0z M6 11a6 6 0 0012 0 M12 17v4', bag:'M6 8h12l-1 12H7z M9 8a3 3 0 016 0', megaphone:'M3 11v2l12 5V6L3 11z M15 8a3 3 0 010 8',
+    phoneout:'M5 4h4l2 5-3 2a12 12 0 006 6l2-3 5 2v4a2 2 0 01-2 2A16 16 0 013 6a2 2 0 012-2z M15 8l6-6 M21 2v5 M21 2h-5'
+  };
+  const svg = k => `<svg viewBox="0 0 24 24"><path d="${I[k]||I.chat}"/></svg>`;
+  const GROUP = {
+    customer:{color:'#1f9e4c',bg:'#e6f6f3'}, sales:{color:'#1d4ed8',bg:'#eef3fe'},
+    backoffice:{color:'#0d9488',bg:'#e6f6f3'}, internal:{color:'#6d28d9',bg:'#f2eefe'}
+  };
+  const BUILT = {
+    customer:[['assets/sme-retail-bright.jpg','Retail & E-commerce','Manage returns, track orders, and boost sales 24/7.'],['assets/sme-office-bright.jpg','Clinics & Services','Automated scheduling and patient-query management.'],['assets/sme-cafe-bright.jpg','Food & Beverage','Handle reservations and diner queries effortlessly.']],
+    sales:[['assets/sme-office-bright.jpg','Agencies & Consultants','Win more work with faster, on-brand outreach.'],['assets/sme-retail-bright.jpg','Property & Big-ticket','Qualify and nurture high-value leads round the clock.'],['assets/sme-cafe-bright.jpg','Services & SMBs','Keep the pipeline full without a big sales team.']],
+    backoffice:[['assets/hero-person.jpg','Finance & Accounting','Cut manual entry and close the books faster.'],['assets/sme-office-bright.jpg','Operations','Turn documents and data into clean, usable records.'],['assets/sme-retail-bright.jpg','Professional Services','Stay compliant with less admin overhead.']],
+    internal:[['assets/sme-office-bright.jpg','Growing Teams','Give every hire an expert on tap from day one.'],['assets/hero-person.jpg','Multi-branch Ops','Consistent answers and processes across locations.'],['assets/sme-cafe-bright.jpg','HR & People','Automate the repetitive parts of hiring & onboarding.']]
+  };
+  const builtTitleByGroup = {customer:'customer-facing teams', sales:'revenue teams', backoffice:'operations teams', internal:'internal teams'};
+
+  const DATA = {
+    'chatbot':{n:'AI Chatbot',c:'Conversational AI',g:'customer',mic:'chat',photo:'assets/sme-office-bright.jpg',
+      sub:'A 24/7 conversational assistant trained on your business — answering customers, capturing leads, and booking appointments across web, WhatsApp, and more.',
+      f:['Web','WhatsApp','Lead capture'], demo:'chat',
+      chat:[['in','Hi! Do you deliver to the west side?'],['out','Yes — we deliver islandwide 🚚 Want me to start an order?'],['in','Yes please, 2 sets for Fri 7pm'],['out','Booked ✅ Sending your invoice now.']],
+      what:[['bolt','Answers instantly','Resolves common customer questions in seconds, any hour of the day.'],['mail','Captures leads','Qualifies visitors and hands warm leads to your team automatically.'],['cal','Books appointments','Schedules bookings directly into your calendar without back-and-forth.'],['star','Speaks your brand','Trained on your content, tone, and policies for on-brand replies.']],
+      ba:[['Support team overwhelmed by repetitive FAQs and long wait times.','85% of queries resolved instantly by AI, freeing agents for complex tasks.'],['Leads dropping off after business hours or during weekend peaks.','40% increase in lead capture through 24/7 conversational intake.']],
+      faq:[['How does the AI learn about my business?','We train it on your website, documents, SOPs, and product catalog — so every answer reflects your real content and tone.'],['Can it handle multiple languages?','Yes — English, 中文, Malay, and Tamil, auto-detected on every channel.']]},
+
+    'voice-agent':{n:'AI Voice Agent',c:'Voice AI',g:'customer',mic:'mic',photo:'assets/sme-office-bright.jpg',
+      sub:'Automated voice answering and call handling for your front desk — around the clock, with a natural local accent.',
+      f:['Inbound calls','IVR','Booking'], demo:'chat',
+      chat:[['in','☎ Incoming call'],['out','"Thanks for calling! How can I help today?"'],['in','"Are you open Sunday?"'],['out','"Yes, 10am–6pm. Shall I book you a table?" ✅']],
+      what:[['phone','Answers every call','Picks up on the first ring, day or night, so no caller hits voicemail.'],['route','Routes intelligently','Understands intent and routes or escalates to the right person.'],['cal','Books over the phone','Takes bookings and reservations straight into your calendar.'],['list','Logs & summarises','Every call transcribed, summarised, and logged for your team.']],
+      ba:[['Missed calls during peak hours meant missed revenue.','Zero missed calls — every caller is answered and handled instantly.'],['Staff tied up on the phone instead of serving customers.','The AI fields routine calls so your team focuses on in-person service.']],
+      faq:[['Does it sound robotic?','No — it uses a natural, local-accent voice and conversational phrasing callers find easy to talk to.'],['Can it transfer to a human?','Yes — it escalates to your team with full context whenever a call needs a person.']]},
+
+    'receptionist':{n:'AI Receptionist',c:'Front Desk AI',g:'customer',mic:'phone',photo:'assets/sme-office-bright.jpg',
+      sub:'An always-on front desk that answers calls and messages, books appointments, and routes the rest to your team.',
+      f:['Inbound','Booking','Routing'], demo:'chat',
+      chat:[['in','Hi, can I get an appointment this week?'],['out','Of course! I have Wed 2pm or Thu 4pm — which suits?'],['in','Wed 2pm'],['out','Booked ✅ A reminder is on its way.']],
+      what:[['clock','Always on duty','Answers calls and messages 24/7, so nothing slips after hours.'],['cal','Handles bookings','Schedules, reschedules, and reminds — without the phone tag.'],['route','Routes the rest','Sends the right enquiry to the right person, every time.'],['shield','Screens & filters','Filters spam and qualifies enquiries before they reach you.']],
+      ba:[['After-hours enquiries went unanswered until the next morning.','Every enquiry gets an instant reply and a booked slot — even at 2am.'],['Reception overwhelmed juggling calls, messages, and walk-ins.','Routine reception handled automatically, freeing staff for guests.']],
+      faq:[['Which channels does it cover?','Phone, web chat, WhatsApp, and email — one front desk across every channel.'],['Can it manage my calendar?','Yes — it books, reschedules, and sends reminders directly in your calendar.']]},
+
+    'retail-assistant':{n:'AI Retail Assistant',c:'Commerce AI',g:'customer',mic:'bag',photo:'assets/sme-retail-bright.jpg',
+      sub:'Answers product questions, checks stock and pricing, tracks orders, and upsells across web and WhatsApp.',
+      f:['Catalog','Orders','Upsell'], demo:'chat',
+      chat:[['in','Do you have this in size M?'],['out','Yes — 4 left in Medium. Want me to reserve one?'],['in','Yes, and add matching socks'],['out','Done ✅ Bundle saves you 10%. Checkout link sent.']],
+      what:[['search','Knows your catalog','Answers product, stock, and pricing questions in real time.'],['box','Tracks orders','Gives instant order and delivery updates without a human.'],['trend','Upsells naturally','Recommends add-ons and bundles that lift average order value.'],['cart','Recovers carts','Nudges hesitant shoppers to complete their purchase.']],
+      ba:[['Shoppers left when product questions went unanswered.','Instant, accurate answers keep shoppers buying around the clock.'],['Abandoned carts quietly drained revenue.','Proactive recovery turns hesitation into completed orders.']],
+      faq:[['Does it connect to my store?','Yes — it syncs with your catalog, stock, and order systems for live answers.'],['Can it handle WhatsApp orders?','Yes — shoppers can browse, ask, and order entirely inside WhatsApp.']]},
+
+    'multilingual-agent':{n:'AI Multilingual Agent',c:'Localization AI',g:'customer',mic:'globe',photo:'assets/sme-office-bright.jpg',
+      sub:'Serves customers in English, 中文, Malay, and Tamil across any channel — auto-detecting language on every message.',
+      f:['EN/中文/BM/TA','Omnichannel','Auto-detect'], demo:'chat',
+      chat:[['in','请问几点关门?'],['out','我们营业到晚上9点 🙂 需要帮您预订吗?'],['in','Yes, table for 2'],['out','Done ✅ See you tonight!']],
+      what:[['globe','Four languages','Serves EN, 中文, Malay, and Tamil natively — no plugins.'],['route','Auto-detects','Switches to the customer’s language automatically, mid-conversation.'],['grid','Every channel','Web, WhatsApp, phone, and email — one consistent voice.'],['star','Stays on-brand','Same tone and policies in every language.']],
+      ba:[['Non-English customers dropped off or waited for a human.','Every customer is served instantly in their own language.'],['Maintaining separate teams per language was costly.','One AI covers four languages across every channel.']],
+      faq:[['How accurate are the translations?','Replies are generated natively in each language, not machine-translated, for natural phrasing.'],['Can it detect language automatically?','Yes — it identifies the language from the first message and responds in kind.']]},
+
+    'whatsapp-ai-assistant':{n:'WhatsApp AI Assistant',c:'Conversational AI',g:'customer',mic:'chat',photo:'assets/sme-cafe-bright.jpg',partner:'chatavocado.ai',
+      sub:'An AI assistant that replies, books, follows up, and invoices on WhatsApp — so work moves without you lifting a finger.',
+      f:['WhatsApp','Booking','Invoicing'], demo:'chat',
+      chat:[['in','Hi, can I book catering for Sat?'],['out','Absolutely! For how many guests?'],['in','About 30'],['out','Booked ✅ Invoice sent, deposit link included.']],
+      what:[['chat','Replies instantly','Answers customer messages on WhatsApp the moment they arrive.'],['cal','Books & reminds','Takes bookings and sends reminders inside the chat.'],['receipt','Sends invoices','Generates and sends invoices without leaving WhatsApp.'],['loop','Follows up','Chases quotes and no-shows automatically.']],
+      ba:[['WhatsApp messages piled up unanswered after hours.','Every message answered instantly, day or night.'],['Manual invoicing and follow-ups ate into billable time.','Bookings, invoices, and follow-ups run themselves.']],
+      faq:[['Do I need a new number?','No — it works on your existing WhatsApp Business number.'],['Who is chatavocado.ai?','Our WhatsApp automation partner powering the deep WhatsApp integration.']]},
+
+    'marketing-studio':{n:'AI Marketing Studio',c:'Marketing AI',g:'sales',mic:'megaphone',photo:'assets/sme-office-bright.jpg',
+      sub:'Produces social posts, ad copy, EDMs, and SEO pages in your brand voice — a full content engine on tap.',
+      f:['Content','Social','SEO'], demo:'card',
+      what:[['pen','On-brand content','Writes posts, ads, and emails that sound exactly like you.'],['grid','Social on autopilot','Plans and drafts a full content calendar in minutes.'],['search','SEO pages','Generates optimised landing and blog pages that rank.'],['loop','Repurposes','Turns one idea into a week of channel-ready content.']],
+      ba:[['Marketing output stalled without a full content team.','A steady stream of on-brand content, published consistently.'],['Freelancers were slow and off-brand.','On-demand copy in your voice, ready in minutes.']],
+      faq:[['Will it match our brand voice?','Yes — it’s trained on your existing content and style guide before it writes a word.'],['Can it schedule posts?','It drafts and plans your calendar; publishing connects to your social tools.']]},
+
+    'proposal-writer':{n:'AI Proposal Writer',c:'Sales Ops AI',g:'sales',mic:'doc',photo:'assets/sme-office-bright.jpg',
+      sub:'Turns an enquiry and your catalog into a branded quote or proposal — then follows up until it’s signed.',
+      f:['Quotes','Proposals','Follow-up'], demo:'card',
+      what:[['doc','Builds proposals','Generates branded quotes and proposals from a simple brief.'],['tag','Prices accurately','Pulls live pricing from your catalog, no manual lookups.'],['send','Sends & tracks','Delivers, tracks opens, and knows when to nudge.'],['loop','Follows up','Chases unsigned proposals automatically until they close.']],
+      ba:[['Quotes took days, and hot leads went cold.','Branded proposals out the door in minutes, while interest is high.'],['Follow-ups slipped, and deals stalled.','Automatic follow-ups keep every proposal moving to signature.']],
+      faq:[['Can it use our templates?','Yes — it builds on your branded templates and pricing rules.'],['Does it integrate with our CRM?','Yes — proposals and status sync back to your CRM automatically.']]},
+
+    'cold-calling':{n:'AI Cold-Calling',c:'Sales Ops AI',g:'sales',mic:'phoneout',photo:'assets/sme-office-bright.jpg',partner:'ManPack',
+      sub:'AI voice agents with a Singaporean accent that qualify and warm up your cold calls — so your team only talks to interested prospects.',
+      f:['Voice AI','Outbound','Lead qualification'], demo:'card',
+      what:[['phone','Dials at scale','Works your call list tirelessly, hundreds of dials a day.'],['star','Local accent','Natural Singaporean-accent voice prospects trust.'],['filter','Qualifies leads','Screens interest and books only warm prospects for your team.'],['list','Logs outcomes','Every call transcribed, scored, and synced to your CRM.']],
+      ba:[['Reps burned hours on dials that went nowhere.','The AI does the dialing; reps only talk to interested buyers.'],['Cold outreach was inconsistent and hard to scale.','Consistent, on-script outreach that scales on demand.']],
+      faq:[['Is it compliant?','Calls follow local calling rules and honour do-not-call lists.'],['Who is ManPack?','Our outbound-calling partner powering the voice agents and dialer.']]},
+
+    'insights':{n:'AI Insights',c:'Analytics',g:'backoffice',mic:'chart',photo:'assets/hero-person.jpg',
+      sub:'Turns your business data into decisions with AI-powered analytics, forecasts, and plain-English reporting.',
+      f:['Dashboards','Forecasts','Alerts'], demo:'card',
+      what:[['chart','Live dashboards','See sales, ops, and customer trends in one clear view.'],['trend','Forecasts ahead','Predicts demand, revenue, and staffing needs.'],['chat','Ask in English','Query your data in plain language and get instant answers.'],['alert','Proactive alerts','Flags anomalies and opportunities before you miss them.']],
+      ba:[['Reports lived in spreadsheets no one had time to read.','Clear, live insights everyone can act on instantly.'],['Decisions were made on gut feel, not data.','Forecasts and alerts turn data into confident decisions.']],
+      faq:[['Where does the data come from?','It connects to your POS, sales, and ops tools for a unified view.'],['Do I need a data team?','No — ask questions in plain English; the AI handles the analysis.']]},
+
+    'finance-clerk':{n:'AI Finance Clerk',c:'Finance Automation',g:'backoffice',mic:'receipt',photo:'assets/hero-person.jpg',
+      sub:'Reads invoices and receipts, codes them, matches purchase orders, and preps payment runs — your books, on autopilot.',
+      f:['AP/AR','OCR','Reconciliation'], demo:'card',
+      what:[['scan','Reads any document','Extracts data from invoices and receipts with OCR.'],['code','Codes & matches','Assigns accounts and matches POs automatically.'],['loop','Reconciles','Keeps ledgers tidy and flags mismatches.'],['receipt','Preps payments','Bundles approved bills into ready payment runs.']],
+      ba:[['Invoices piled up and month-end was a scramble.','Documents processed as they arrive; month-end is calm.'],['Manual data entry caused errors and delays.','Accurate, automated coding with a clean audit trail.']],
+      faq:[['Does it work with our accounting software?','Yes — it syncs with your accounting system and chart of accounts.'],['Who approves payments?','Your team — the AI preps runs; approval always stays with you.']]},
+
+    'document-processor':{n:'AI Document Processor',c:'Document AI',g:'backoffice',mic:'doc',photo:'assets/hero-person.jpg',
+      sub:'Turns contracts, claims, forms, and IDs into structured data your systems can use — no manual entry.',
+      f:['OCR','Extraction','Workflow'], demo:'card',
+      what:[['scan','Extracts data','Pulls fields from any document type accurately.'],['grid','Classifies','Sorts and tags documents automatically.'],['check','Validates','Checks for missing fields and inconsistencies.'],['route','Feeds workflows','Pushes clean data straight into your systems.']],
+      ba:[['Teams re-typed data from PDFs for hours.','Documents become structured data in seconds.'],['Errors from manual entry slowed everything down.','Validated, accurate data flows straight to your systems.']],
+      faq:[['What documents can it handle?','Contracts, claims, forms, IDs, invoices — structured or scanned.'],['Is it accurate on messy scans?','Yes — it handles photos and scans, and flags anything low-confidence.']]},
+
+    'compliance-officer':{n:'AI Compliance Officer',c:'Risk & Compliance',g:'backoffice',mic:'shield',photo:'assets/hero-person.jpg',
+      sub:'Runs onboarding checks, verifies documents, screens for risk, and keeps a clean audit trail — compliance without the headache.',
+      f:['KYC','AML','Audit trail'], demo:'card',
+      what:[['shield','KYC checks','Verifies identities and documents during onboarding.'],['search','Risk screening','Screens against sanctions and PEP lists automatically.'],['list','Audit trail','Logs every check for a clean, exportable record.'],['alert','Flags risk','Escalates anything suspicious to your team.']],
+      ba:[['Manual onboarding checks were slow and inconsistent.','Fast, consistent KYC that clears good customers in minutes.'],['Audit prep meant digging through scattered records.','A complete audit trail, ready to export any time.']],
+      faq:[['Which checks does it run?','KYC identity and document verification, plus AML sanctions and PEP screening.'],['Is the audit trail exportable?','Yes — every check is logged and exportable for regulators.']]},
+
+    'knowledge-assistant':{n:'AI Knowledge Assistant',c:'Internal Copilot',g:'internal',mic:'book',photo:'assets/sme-office-bright.jpg',
+      sub:'An internal expert that answers staff questions from your SOPs, policies, and product docs — instantly, in Slack or Teams.',
+      f:['RAG','Slack/Teams','Search'], demo:'card',
+      what:[['book','Knows your docs','Answers from your SOPs, policies, and product knowledge.'],['chat','In Slack & Teams','Lives where your team already works.'],['search','Instant search','Finds the right answer without digging through drives.'],['doc','Cites sources','Links the exact document behind every answer.']],
+      ba:[['Staff pinged colleagues for the same answers daily.','Everyone self-serves instantly, freeing your experts.'],['Knowledge was scattered across drives and inboxes.','One trusted place to ask, with sourced answers.']],
+      faq:[['Where does it get answers?','From your own documents — SOPs, policies, wikis, and product docs.'],['Does it show sources?','Yes — every answer links the document it came from.']]},
+
+    'recruiter':{n:'AI Recruiter',c:'HR AI',g:'internal',mic:'users',photo:'assets/sme-office-bright.jpg',
+      sub:'Screens applicants, answers candidate questions, schedules interviews, and hands you a ranked shortlist — hiring on autopilot.',
+      f:['Screening','Scheduling','Shortlist'], demo:'card',
+      what:[['filter','Screens applicants','Reviews every application against your criteria.'],['chat','Answers candidates','Handles candidate questions 24/7.'],['cal','Schedules interviews','Coordinates and books interview slots automatically.'],['chart','Ranks & shortlists','Delivers a ranked shortlist with clear reasoning.']],
+      ba:[['High applicant volume buried the good candidates.','A ranked shortlist surfaces the best applicants fast.'],['Scheduling interviews was endless back-and-forth.','Interviews booked automatically, no coordination needed.']],
+      faq:[['Is screening fair and unbiased?','It screens on job-relevant criteria you define, with transparent reasoning.'],['Does it integrate with our ATS?','Yes — candidates and status sync with your applicant tracking system.']]}
+  };
+
+  const SHARED_FAQ = d => [
+    ['How do we get '+d.n+' live?','Share your goals and content; we configure, integrate, and test it, then deploy across your channels — live in days.'],
+    ['Is my data secure?','Your data is encrypted in transit and at rest, never used to train shared models, and handled to enterprise security standards.']
+  ];
+
+  const id = (new URLSearchParams(location.search).get('id')||'chatbot').toLowerCase();
+  const d = DATA[id] || DATA['chatbot'];
+  const reduce = window.matchMedia('(prefers-reduced-motion:reduce)').matches;
+
+  document.title = d.n + ' — StarHub AI Marketplace';
+  document.getElementById('crumbName').textContent = d.n;
+  document.getElementById('sub').textContent = d.sub;
+  document.getElementById('heroImg').src = d.photo;
+  document.getElementById('heroImg').alt = d.n;
+
+  // category chip (group colored)
+  const gc = GROUP[d.g];
+  const cat = document.getElementById('cat');
+  cat.style.color = gc.color; cat.style.background = gc.bg;
+  document.getElementById('catText').textContent = d.c;
+
+  // title: first word normal, rest gradient
+  const parts = d.n.split(' ');
+  document.getElementById('title').innerHTML = parts[0] + ' <span class="gt">' + parts.slice(1).join(' ') + '</span>';
+
+  // hero float: chat or spec card
+  const float = document.getElementById('float');
+  if(d.demo === 'chat'){
+    float.innerHTML = '<div class="cw-top"><span class="cw-av">'+svg('chat')+'</span><div><b>StarHub Assistant</b><br/><span class="on">● Online</span></div></div><div class="cw-body" id="chat"></div>';
+    const chat = float.querySelector('#chat');
+    d.chat.forEach((c,i)=>{ const el=document.createElement('div'); el.className='msg '+c[0]+(reduce?'':' reveal'); el.textContent=c[1]; if(!reduce) el.style.animationDelay=(0.5+i*0.7)+'s'; chat.appendChild(el); });
+  } else {
+    float.classList.add('spec');
+    float.innerHTML = '<div class="spec-ic">'+svg(d.mic)+'</div><b>'+d.n+'</b>'+
+      '<div class="chips">'+d.f.map(x=>'<span class="chip">'+x+'</span>').join('')+'</div>'+
+      '<div class="live">● Live now</div>';
+  }
+
+  // what it does
+  document.getElementById('whatGrid').innerHTML = d.what.map(w=>`<div class="card"><div class="ic">${svg(w[0])}</div><h3>${w[1]}</h3><p>${w[2]}</p></div>`).join('');
+
+  // built for
+  document.getElementById('builtTitle').innerHTML = 'Built for <span class="gt">'+builtTitleByGroup[d.g]+'</span>';
+  document.getElementById('builtGrid').innerHTML = BUILT[d.g].map(b=>`<div class="sol"><img src="${b[0]}" alt="${b[1]}" /><div class="sol-body"><h3>${b[1]}</h3><p>${b[2]}</p></div></div>`).join('');
+
+  // before / after
+  document.getElementById('baList').innerHTML = d.ba.map(r=>`<div class="ba-row"><div class="ba-cell ba-before"><span class="ba-tag"><span class="dot">✕</span>Before</span><p>${r[0]}</p></div><div class="ba-cell ba-after"><span class="ba-tag"><span class="dot">✓</span>After</span><p>${r[1]}</p></div></div>`).join('');
+
+  // faq (product + shared)
+  const faqs = d.faq.concat(SHARED_FAQ(d));
+  document.getElementById('faqList').innerHTML = faqs.map(f=>`<details class="q"><summary>${f[0]}<span class="plus">+</span></summary><div class="ans">${f[1]}</div></details>`).join('');
+
+  // cta
+  document.getElementById('ctaTitle').textContent = 'Ready to put '+d.n+' to work?';
+  document.getElementById('ctaSub').textContent = 'Join 900K+ businesses growing with StarHub. Setup takes less than a day.';
+</script>
+</body>
+</html>

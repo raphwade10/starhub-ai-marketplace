@@ -587,7 +587,7 @@
     <section class="block" id="flagships" style="background:radial-gradient(1100px 500px at 20% 6%,rgba(76,196,110,.14),transparent 60%),#fbfcfd;border-top:1px solid var(--line-soft);border-bottom:1px solid var(--line-soft)">
       <div class="wrap">
         <div class="mkt-head">
-          <h2>Explore <span class="grad-gb">Marketplace</span></h2>
+          <h2>Explore <span class="grad">Marketplace</span></h2>
           <div class="mkt-filters">
             <button class="fpill active" data-filter="all">All</button>
             <button class="fpill" data-filter="customer">Customer-facing</button>
@@ -787,6 +787,7 @@
     {n:"AI Knowledge Assistant",c:"Internal Copilot",g:"internal",ic:"book",d:"An internal expert that answers staff questions from your SOPs, policies, and product docs.",f:["RAG","Slack/Teams","Search"]},
     {n:"AI Recruiter",c:"HR AI",g:"internal",ic:"users",d:"Screens applicants, answers candidate questions, schedules interviews, and hands you a ranked shortlist.",f:["Screening","Scheduling","Shortlist"]}
   ];
+  const slugify = n => n.toLowerCase().replace(/^ai /,'').replace(/[^a-z0-9]+/g,'-').replace(/(^-|-$)/g,'');
   const flagGrid = document.getElementById('flagGrid');
   flagGrid.innerHTML = flagships.map(p=>`
     <article class="flag g-${p.g}" data-group="${p.g}">
@@ -798,7 +799,7 @@
       <div class="chips">${p.f.map(x=>`<span class="chip">${x}</span>`).join('')}</div>
       <div class="flag-foot">
         ${p.partner?`<span class="partner">In partnership with <b>${p.partner}</b></span>`:''}
-        <a class="flag-btn" href="${p.link||'mailto:hello@starhub.ai'}">Learn more <span class="arw">↗</span></a>
+        <a class="flag-btn" href="flagship.html?id=${slugify(p.n)}">Learn more <span class="arw">↗</span></a>
       </div>
     </article>`).join('');
 
